@@ -8,10 +8,17 @@ xyzfile='equilibrium.xyz'
 # TEST
 imode=11
 Factor=2.0
+istate=2
+imode=1
+Time,v = read_gwpcentres(Nstate,istate)
 displace_coords(xyzfile,imode,Factor)
 
+# v[column][row]
+print v[0][0]
+print v[2][11]
 
 #for istate in range(1,Nstate):		# Loop over states
+"""
 istate=1
 Time,v1,v2,v3,v4 = read_gwpcentres(Nstate,istate)
 for t in range(1,len(Time)): 	# Loop over timesteps
@@ -26,4 +33,4 @@ for t in range(1,len(Time)): 	# Loop over timesteps
          displace_coords(xyzfile,imode,v3[t])
       elif c==4:
          displace_coords(xyzfile,imode,v4[t])
-   
+"""

@@ -8,7 +8,7 @@ def read_xyz(fname):
    with open(fname,'r') as f:			# open file   
       AtomList=[]; Coords=[]
       c=0
-      for i in range(0,2):
+      for i in range(2):
          f.next()				# Skip first 2 lines
       for line in f:				
          AtomList.append(line.split()[0]) 	# List of atomic labels
@@ -75,7 +75,7 @@ def displace_coords(xyzfile,imode,Factor):
    with open('displaced_coords.xyz','w') as f:
       f.write(str(Nat)+'\n')				# The first line of an xyz file contains only the number of atoms
       f.write('Displaced Coordinates\n')		# The second line is blank or contains a title string (convention)
-      for i in range(0,3*Nat):				# Loop over vectors of lentgh 3*Nat
+      for i in range(3*Nat):				# Loop over vectors of lentgh 3*Nat
          if i%3==0:					# Indices 0,3,6,...
             Atom=AtomList[i/3]				# Read atom labels (at indices 0,1,2,... every i=0,3,6,...)
             x = R0[i] + (Factor*Displc[i])*au2ang 	# Displaced x coordinate
@@ -94,25 +94,41 @@ def read_gwpcentres(Nstate,istate):
    # Inputs: 	Nstate (int), the total number of states
    #		istate (int), the state to read
    # Outputs:	Time (float list), list of time in atomic units 
-   # 		v1,v2,v3,v4 (float lists), Lists of displacement factors for modes 1-4
-   # At the moment hard-coded 4 modes, so can only be used when there are exactly 4 modes!
+   # 		v (float list), Lists of displacement factors for mode 'imode'
    ##################################################
-   f=open('gwpcentres','r')
-   lines=f.readlines()
-   Time=[]; v1=[]; v2=[]; v3=[]; v4=[];
-   c=0
+   Time=[]; v=[]; c=0
    with open('gwpcentres','r') as f:
       for line in f:
          c=c+1
-         if c>1:
-            if (c-2)%(2*Nstate+1)==0:
-               Time.append(float(line.split()[1]))         # List of time in atomic units
-            elif (c+3-2*istate)%(2*Nstate+1)==0:	   # This fits the formatting of the gwpcentres file
-               v1.append(float(line.split()[0]))
-               v2.append(float(line.split()[1]))
-               v3.append(float(line.split()[2]))
-               v4.append(float(line.split()[3]))
+         if c==1:					# Line 1 contains Nmode and Ng
+            Nmode=int(line.split()[1])			# Number of modes
+   	    for i in range(Nmode):
+               v.append([])
+	    Ng=int(line.split()[2])			# Number of Gaussians
+   	    rep=Nstate*(Ng+1)+1				# gwpcentres repeats every Nstate*(Ng+1)+1 lines
+            print "There are Nmode = " + str(Nmode) + " modes in gwpcentres"
+            print "There are Ng = " + str(Ng) + " Gaussians in gwpcentres"
+
+         elif c>1:					# Lines >1 have time and displacement factors
+            if (c-2)%rep==0:				# Repetition every 'rep' lines
+               #print "t lines: " + line
+	       x=0					# (re)set counter
+               Time.append(float(line.split()[1]))	# List of time in atomic units
+            elif (c-x-4-(istate-1)*(Ng+1))%rep==0:	# This fits the formatting of the gwpcentres file
+               #print "v lines: " + line
+	       for imode in range(Nmode):
+	          v[imode-1].append(float(line.split()[imode-1]))
+	       x=x+1					# counter causes Ng extra lines to be appended (which is what we want)
+	      
+   # Checks
+   Nt = len(Time)
+   print "There are Nt = " + str(Nt) + " total time-steps"
+   if len(v[0])==Nt*Ng:
+      print "There are Nt*Ng = " + str(Nt*Ng) + " rows of displacement factors, as there should be."
+   else:
+      print "Error: There are " + str(Nt*Ng) +  " =/= Nt*Ng rows of displacement factors! Exiting..."
+      return
    ##################################################
-   return Time,v1,v2,v3,v4 
+   return Time,v 
 
 
