@@ -1,21 +1,34 @@
 from myfunctions import *
 
 Nstate=2 # Number of states: 2 state model
-# Modes=[11,3,14,8] # Known from comparison to pyrazine 4-mode model paper 
-Modes=[11,3,14]     # TEST line! Can delete later
+Modes=[11,3,14,8] # Known from comparison to pyrazine 4-mode model paper 
 xyzfile='equilibrium.xyz'
 
-# TEST
-imode=11
-Factor=2.0
-istate=2
-imode=1
-Time,v = read_gwpcentres(Nstate,istate)
-displace_coords(xyzfile,imode,Factor)
 
-# v[column][row]
-print v[0][0]
-print v[2][11]
+
+
+
+
+# TEST for 1 time-step, state=1, and Ng=1
+####################################################
+istate=1
+AtomList,R0 = read_xyz(xyzfile)
+Time,v = read_gwpcentres(Nstate,istate)
+
+D=R0
+for i in range(len(Modes)):
+   # v[column][row] = v[mode index][Gaussian index]
+   Factor = v[i][20]
+   imode=Modes[i]   
+   D = displace_coords(D,imode,Factor)
+
+fname='TEST.xyz'
+write_xyz(AtomList,D,fname)
+####################################################
+
+
+
+
 
 #for istate in range(1,Nstate):		# Loop over states
 """
