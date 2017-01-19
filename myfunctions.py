@@ -86,7 +86,7 @@ def read_displacements(Nat,imode):
 
 def read_gwpcentres(Nstate,istate):
    ##################################################
-   # Read displacement factors from file 'gwpcentres' for state 'istate'.
+   # read_gwpcentres: Read displacement factors from file 'gwpcentres' for state 'istate'.
    # Inputs: 	Nstate (int), the total number of states
    #		istate (int), the state to read
    # Outputs:	Time (float list), list of time in atomic units 
@@ -131,7 +131,7 @@ def read_gwpcentres(Nstate,istate):
 
 def read_output(Nstate,Ng):
    ##################################################
-   # Read Gaussian weights (and state weights) from file 'output' for state 'istate'.
+   # read_output: Read Gaussian weights (and state weights) from file 'output' for state 'istate'.
    # Inputs: 	Nstate (int), total number of states
    # 	 	Ng (int), total number of Gaussians
    # Outputs:	Time (float list), list of time in fs 
