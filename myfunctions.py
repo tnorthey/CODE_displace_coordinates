@@ -75,7 +75,7 @@ def read_displacements(Nat,imode):
    # Append displacements from file to column vector 'Displc'
    c=0
    Displc=[]
-   with open('normalmodes.txt','r') as f:
+   with open('inputs/normalmodes.txt','r') as f:
       for line in f:
          c=c+1
          if c>a and c<=b:
@@ -93,7 +93,7 @@ def read_gwpcentres(Nstate,istate):
    # 		v (float array), displacement factors array with columns 0,1,...,Nmode-1 pertaining to modes 1,2,...,Nmode, rows correspond to Ng Gaussians
    ##################################################
    Time=[]; v=[]; c=0; x=0
-   with open('gwpcentres','r') as f:
+   with open('inputs/gwpcentres','r') as f:
       for line in f:
          c+=1
          if c==1:					# Line 1 contains Nmode and Ng
