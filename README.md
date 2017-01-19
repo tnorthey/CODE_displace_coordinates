@@ -8,81 +8,97 @@ Python function toolset for displacing coordinates along a normal mode.
 
 ### read_xyz  
 
-#####Description:
+#####Description
 Reads xyz file 'fname'
 
-#####Usage:
+#####Usage
 ```python
 read_xyz(fname)
 ```
 
-#####Inputs:    
+#####Inputs    
 - fname, the file name of the xyz file to read
 
-#####Outputs:   
+#####Outputs   
 - AtomList (string list), list of atomic labels;
  
 - Coords (float list), coordinates as column vector with the format X1,Y1,Z1,X2,Y2,Z2,...
 
-### write_xyz: Write xyz file 'fname' using atom list 'AtomList' and Cartesian coordinates 'Coords'
-#####Usage:
+### write_xyz 
+
+#####Description
+Write xyz file 'fname' using atom list 'AtomList' and Cartesian coordinates 'Coords'
+
+#####Usage
 ```python
 write_xyz(AtomList,Coords,fname)
 ```
 
-#####Inputs:    
+#####Inputs    
 - AtomList (string list), list of atomic labels
 
 - Coords (float list), coordinates as column vector with the format X1,Y1,Z1,X2,Y2,Z2,... 
 
 - fname (str), output xyz file name
   
-#####Outputs:   
+#####Outputs   
 - 'fname' (file), xyz file
 
 
-### read_displacements: Reads displacement coordinates for mode 'imode' from 'normalmodes.txt'
-#####Usage:
+### read_displacements 
+
+#####Description
+Reads displacement coordinates for mode 'imode' from 'normalmodes.txt'
+
+#####Usage
 ```python
 read_displacements(Nat,imode)
 ```
 
-#####Inputs:    
+#####Inputs    
 - Nat (int), total number of atoms
 
 - imode (int), the displacements are taken from mode number 'imode'
 
-#####Outputs:   
+#####Outputs   
 - D (float list), single column of displacement coordinates (length 3 x Nat)
 
-### read_gwpcentres: Read displacement factors from file 'gwpcentres' for state 'istate'.
-#####Usage:
+### read_gwpcentres 
+
+#####Description
+Read displacement factors from file 'gwpcentres' for state 'istate'.
+
+#####Usage
 ```python
 read_gwpcentres(Nstate,istate)
 ```
 
-#####Inputs:    
+#####Inputs    
 - Nstate (int), the total number of states
 
 - istate (int), the state to read
 
-#####Outputs:   
+#####Outputs   
 - Time (float list), list of time in atomic units 
 
 - v (float array), displacement factors array with columns 0,1,...,Nmode-1 pertaining to modes 1,2,...,Nmode, rows correspond to Ng Gaussians
 
-### read_output: Read Gaussian weights (and state weights) from file 'output' for state 'istate'.
-#####Usage:
+### read_output 
+
+#####Description
+Read Gaussian weights (and state weights) from file 'output' for state 'istate'.
+
+#####Usage
 ```python
 read_output(Nstate,Ng)
 ```
 
-#####Inputs:    
+#####Inputs    
 - Nstate (int), total number of states
 
 - Ng (int), total number of Gaussians
 
-#####Outputs:   
+#####Outputs   
 - Time (float list), list of time in fs 
 
 - Pop (float array), state populations with columns 0,1,...,Nstate-1 pertaining to states 1,2,...,Nstate
@@ -90,65 +106,81 @@ read_output(Nstate,Ng)
 - gWeights (float array), Gaussian populations with columns 0,1,...,Ng-1 pertaining to Gaussians 1,2,...,Ng
 
 
-### read_adc: Reads excitation energies and oscillator strengths from qchem XAS ADC calculation output.
-#####Usage:
+### read_adc
+
+#####Description
+Reads excitation energies and oscillator strengths from qchem XAS ADC calculation output.
+
+#####Usage
 ```python
 read_adc(ADCoutput)
 ```
 
-#####Inputs:    
+#####Inputs    
 - ADCoutput (str), ADC output file name
 
-#####Outputs:   
+#####Outputs   
 - XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
 
 
-### read_src: Reads excitation energies and oscillator strengths from qchem XAS SRC calculation output.
-#####Usage:
+### read_src 
+
+#####Description
+Reads excitation energies and oscillator strengths from qchem XAS SRC calculation output.
+
+#####Usage
 ```python
 read_adc(SRCoutput)
 ```
 
-#####Inputs:    
+#####Inputs    
 - SRCoutput (str), SRC output file name
 
-#####Outputs:   
+#####Outputs   
 - XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
 
 
-### displace_coords: Displace coords from xyz file 'xyzfile' along mode 'imode' (0<int<=Nmode) by 'Factor' (float)
-#####Usage:
+### displace_coords 
+
+#####Description
+Displace coords from xyz file 'xyzfile' along mode 'imode' `(0<int<=Nmode)` by 'Factor' (float)
+
+#####Usage
 ```python
 displace_coords(Coords,imode,Factor)
 ```
 
-#####Inputs:    
+#####Inputs    
 - Coords (float list), coordinates as column vector with the format X1,Y1,Z1,X2,Y2,Z2,...
 
 - imode (int), the coordinates are displaced along mode number 'imode'
 
 - Factor (float), the coordinates are displaced along mode number 'imode' by 'Factor' atomic units  
 
-#####Outputs:   
+#####Outputs   
 - D (float list), displaced coordinates with same formatting as 'Coords'
 
 
-### generate_spectrum: Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV)
-#####Usage:
+### generate_spectrum 
+
+#####Description
+Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV)
+
+#####Usage
 ```python
 generate_spectrum(XAS)
 ```
 
-#####Inputs:    
+#####Inputs    
 - XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
 
-#####Outputs:   
+#####Outputs   
 - x (float list), x-axis energies (eV)
 
 - spect (float list), spectrum (arb. units) with Lorentzian broadened lines with FWHM=0.5 eV 
 
 
-## Files:
+## Files
 
 
 
