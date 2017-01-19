@@ -176,6 +176,68 @@ def read_output(Nstate,Ng):
    return Time,Pop,gWeights
 
 
+def read_adc(ADCoutput):
+   ##################################################
+   # read_adc: Reads excitation energies and oscillator strengths from qchem XAS ADC calculation output.
+   # Inputs:    ADCoutput (str), ADC output file name
+   # Outputs:   XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths 
+   ##################################################
+   XAS=[];
+   XAS.append([])
+   XAS.append([])
+   c=0
+   str1='Excitation energy:'
+   str2='Osc. strength:'
+   with open(ADCoutput,'r') as f:
+      for line in f:
+         if line[2:len(str1)+2]==str1:
+            if c==0:
+	       #print line.split()[2]
+               E=float(line.split()[2])
+	       c=1
+	 elif line[2:len(str2)+2]==str2:
+	    if c==1:
+	       #print line.split()[2]
+	       XAS[1].append(float(line.split()[2]))
+	       XAS[0].append(E)
+	       c=0
+            
+   # Checks
+   ##################################################
+   return XAS
+
+
+def read_src(SRCoutput):
+   ##################################################
+   # read_adc: Reads excitation energies and oscillator strengths from qchem XAS SRC calculation output.
+   # Inputs:    SRCoutput (str), SRC output file name
+   # Outputs:   XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths 
+   ##################################################
+   XAS=[];
+   XAS.append([])
+   XAS.append([])
+   c=0
+   str1='Excited state'
+   str2='Strength'
+   with open(SRCoutput,'r') as f:
+      for line in f:
+         if line[1:len(str1)+1]==str1:
+            if c==0:
+               #print line.split()[2]
+               E=float(line.split()[7])
+               c=1
+         elif line[4:len(str2)+4]==str2:
+            if c==1:
+               #print line.split()[2]
+               XAS[1].append(float(line.split()[2]))
+               XAS[0].append(E)
+               c=0
+
+   # Checks
+   ##################################################
+   return XAS
+
+
 def displace_coords(Coords,imode,Factor):
    ##################################################
    # displace_coords: Displace coords from xyz file 'xyzfile' along mode 'imode' (0<int<=Nmode) by 'Factor' (float)
@@ -191,5 +253,38 @@ def displace_coords(Coords,imode,Factor):
       D.append(Coords[i] + Factor*Displc[i]) 	# Displaced coordinates
    ################################################## 
    return D
+
+
+def generate_spectrum(XAS):
+   ##################################################
+   # generate_spectrum:
+   # Inputs:    XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
+   # Outputs:   x (float list), x-axis energies (eV)
+   # 		spect (float list), spectrum (arb. units) with Lorentzian broadened lines with FWHM=0.5 eV 
+   ##################################################
+   E=XAS[0]			# Line energies
+   Emin=int(E[0]-1.5)		# Min energy
+   Emax=int(E[-1]+1.5)		# Max energy
+   A=XAS[1]			# Line intensities
+   x=[]
+   res=25			# resolution of x-axis (arbitrary)
+   for i in range(Emin*res,Emax*res+1):
+      x.append(i/float(res))	# x-axis (energies)
+   
+   spect=[]
+   for i in range(len(x)):
+      spect.append(float(0.))	# define spectrum blank list
+  
+   fwhm=.5 
+   g=(fwhm/2.)**2		# Factor in Lorentzian function
+   for j in range(len(A)):
+      a=A[j]			# amplitude of line j
+      e=E[j]			# energy of line j
+      for i in range(len(x)):
+         
+         Lorentz = a*g/( (x[i]-e)**2 + g )		# Lorentzian broadening
+         spect[i]=spect[i]+Lorentz			# XAS
+
+   return x,spect
 
 
