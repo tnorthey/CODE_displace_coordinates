@@ -27,6 +27,7 @@ for i in range(len(Modes)):	# loop over modes
 # Create output file
 fname='displaced.xyz'			
 write_xyz(AtomList,D,fname)	# Write final displaced geometry to file
+
 ```
 
 ## Functions
