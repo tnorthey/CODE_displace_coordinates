@@ -257,7 +257,7 @@ def displace_coords(Coords,imode,Factor):
 
 def generate_spectrum(XAS):
    ##################################################
-   # generate_spectrum:
+   # generate_spectrum: Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV) 
    # Inputs:    XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
    # Outputs:   x (float list), x-axis energies (eV)
    # 		spect (float list), spectrum (arb. units) with Lorentzian broadened lines with FWHM=0.5 eV 
@@ -275,7 +275,7 @@ def generate_spectrum(XAS):
    for i in range(len(x)):
       spect.append(float(0.))	# define spectrum blank list
   
-   fwhm=.5 
+   fwhm=.5			# 0.5 eV width 
    g=(fwhm/2.)**2		# Factor in Lorentzian function
    for j in range(len(A)):
       a=A[j]			# amplitude of line j

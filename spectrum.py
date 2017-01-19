@@ -4,17 +4,19 @@
 from myfunctions import *
 import sys
 
-option=sys.argv[1]
-filename=sys.argv[2]
+option=sys.argv[1].lower()	# adc/src option, case insenstive 
+filename=sys.argv[2]		# file name
 
-if option=='ADC':
+if option=='adc':
    XAS = read_adc(filename)
-elif option=='SRC':
+elif option=='src':
    XAS = read_src(filename)
 else: 
-   print "Pick option='ADC' or 'SRC'"
+   print "Error: Pick option='ADC' or 'SRC'"
 
-x,spect = generate_spectrum(XAS)
+x,spect = generate_spectrum(XAS)	# generate spectrum
 
-print x
-print spect
+with open('spectrum.dat','w') as f:
+   for i in range(len(x)):
+      f.write(str(x[i]) + '  ' + str(spect[i]) + '\n')
+

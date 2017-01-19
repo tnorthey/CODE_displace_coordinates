@@ -145,7 +145,7 @@ displace_coords(Coords,imode,Factor)
 - D (float list), displaced coordinates with same formatting as 'Coords'
 
 
-### generate_spectrum:
+### generate_spectrum: Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV)
 #####Usage:
 ```python
 generate_spectrum(XAS)
