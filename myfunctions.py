@@ -209,7 +209,7 @@ def read_adc(ADCoutput):
 
 def read_src(SRCoutput):
    ##################################################
-   # read_adc: Reads excitation energies and oscillator strengths from qchem XAS SRC calculation output.
+   # read_src: Reads excitation energies and oscillator strengths from qchem XAS SRC calculation output.
    # Inputs:    SRCoutput (str), SRC output file name
    # Outputs:   XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths 
    ##################################################
