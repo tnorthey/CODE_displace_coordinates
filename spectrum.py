@@ -16,6 +16,7 @@ else:
 
 x,spect = generate_spectrum(XAS)	# generate spectrum
 
+# Write spectrum to file
 with open('spectrum.dat','w') as f:
    for i in range(len(x)):
       f.write(str(x[i]) + '  ' + str(spect[i]) + '\n')

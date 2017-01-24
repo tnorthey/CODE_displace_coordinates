@@ -5,7 +5,7 @@ You are running Q-Chem version: 4.3
 #
 local host:  tp-linux1
 current dir: /home/thomas/fs-XAS-test01/pyrazine/qchem
-input file:  21-22_SRC_6-311+G_pyr.inp
+input file:  21-22_SRC_6-311+G_pyr_b3lyp.inp
 output file: 
 nprocs     : 1
 nthreads   : 1
@@ -21,14 +21,14 @@ QCMPI:       mpich
 #
 # qchem directory setting
 #
-qcrun:       qchem8194
+qcrun:       qchem12798
 QCSCRATCH:   /scratch/qchem
 QCLOCALSCR:  
 QCTMPDIR:    /scratch/qchem
-QCFILEPREF:  /scratch/qchem/qchem8194
+QCFILEPREF:  /scratch/qchem/qchem12798
 QCSAVEDIR:   
-workdirs:    /scratch/qchem/qchem8194
-workdir0:    /scratch/qchem/qchem8194
+workdirs:    /scratch/qchem/qchem12798
+workdir0:    /scratch/qchem/qchem12798
 partmpdirs =  
 #
 # parallel setting
@@ -44,16 +44,16 @@ QCMACHINEFILE:   /mnt/software/qchem/bin/mpi/machines
 #
 exported envs:   QC QCAUX QCSCRATCH QCRUNNAME QCFILEPREF QCPROG QCPROG_S GUIFILE
 
-Running Job 1 of 3 21-22_SRC_6-311+G_pyr.inp
-qchem 21-22_SRC_6-311+G_pyr.inp_8194.0 /scratch/qchem/qchem8194/ 1
-/mnt/software/qchem/bin/mpi/mpirun_qchem -machinefile /mnt/software/qchem/bin/mpi/machines -np 1 /mnt/software/qchem/exe/qcprog.exe 21-22_SRC_6-311+G_pyr.inp_8194.0 /scratch/qchem/qchem8194/
+Running Job 1 of 3 21-22_SRC_6-311+G_pyr_b3lyp.inp
+qchem 21-22_SRC_6-311+G_pyr_b3lyp.inp_12798.0 /scratch/qchem/qchem12798/ 1
+/mnt/software/qchem/bin/mpi/mpirun_qchem -machinefile /mnt/software/qchem/bin/mpi/machines -np 1 /mnt/software/qchem/exe/qcprog.exe 21-22_SRC_6-311+G_pyr_b3lyp.inp_12798.0 /scratch/qchem/qchem12798/
 
 Process 0 of 1 is on tp-linux1 - thread support 0
 initial socket setup ...start
 initial socket setup ...done 
 now start server 0 ... 
 
-cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1593727286 > /scratch/qchem/qchem8194/lic.dat
+cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 2025482799 > /scratch/qchem/qchem12798/lic.dat
                   Welcome to Q-Chem
      A Quantum Leap Into The Future Of Chemistry
 
@@ -112,12 +112,12 @@ cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1593727286 > /scratch/qch
  Parts of Q-Chem use Armadillo 5.200.1 (Boston Tea Smuggler).
  http://arma.sourceforge.net/
 
- Q-Chem begins on Mon Jan 16 17:12:37 2017  
+ Q-Chem begins on Mon Jan 23 10:55:25 2017  
 
 Host: 
 0
 
-     Scratch files written to /scratch/qchem/qchem8194//
+     Scratch files written to /scratch/qchem/qchem12798//
  Nov1815 1189b_ 19540  19532 5443   
  Parallel job on  1  processors
 Processing $rem in /mnt/software/qchem/config/preferences.
@@ -197,9 +197,9 @@ $end
    H ( 10)  4.832065  4.134320  2.501250
  
  tim1(1): 
-  4.000000000000004E-003
+  3.999999999999997E-003
  tim1(2): 
-  1.000000000000000E-006
+  0.000000000000000E+000
  A cutoff of  1.0D-08 yielded   1110 shell pairs
  There are     10445 function pairs (     11350 Cartesian)
  
@@ -258,32 +258,32 @@ $end
  Using SG-1 standard quadrature grid
  SCF converges when DIIS error is below 1.0E-05
  CPU 0.00 s  wall 0.00 s
- CPU 1.09 s  wall 1.09 s
+ CPU 0.96 s  wall 0.96 s
  ---------------------------------------
   Cycle       Energy         DIIS Error
  ---------------------------------------
     1    -265.6860212149      5.73E-02
  CPU 0.00 s  wall 0.00 s
- CPU 1.20 s  wall 1.21 s
+ CPU 0.90 s  wall 0.90 s
     2    -264.3273276756      4.36E-03
  CPU 0.00 s  wall 0.00 s
- CPU 1.15 s  wall 1.15 s
+ CPU 0.95 s  wall 1.01 s
     3    -264.3257910586      4.66E-03
  CPU 0.00 s  wall 0.00 s
- CPU 1.13 s  wall 1.13 s
+ CPU 0.95 s  wall 0.95 s
     4    -264.3776620061      1.12E-03
  CPU 0.00 s  wall 0.00 s
- CPU 1.12 s  wall 1.12 s
+ CPU 0.89 s  wall 0.89 s
     5    -264.3798614825      3.79E-04
  CPU 0.00 s  wall 0.00 s
- CPU 0.94 s  wall 0.94 s
+ CPU 0.87 s  wall 0.87 s
     6    -264.3801968251      5.48E-05
  CPU 0.00 s  wall 0.00 s
- CPU 0.92 s  wall 0.92 s
+ CPU 0.82 s  wall 0.82 s
     7    -264.3800713155      4.28E-06 Convergence criterion met
  ---------------------------------------
  <S^2> = 0.0000
- SCF time:  CPU 10.88 s  wall 11.25 s
+ SCF time:  CPU 10.02 s  wall 10.50 s
  SCF   energy in the final basis set = -264.3800713155
  Total energy in the final basis set = -264.3800713155
  
@@ -418,10 +418,10 @@ $end
       XZZZ       0.0000   YZZZ       0.0000   ZZZZ     -40.0225
  -----------------------------------------------------------------
 Archival summary:
-1\1\tp-linux1\SP\ProcedureUnspecified\BasisUnspecified\244\thomas\MonJan1617:12:492017MonJan1617:12:492017\0\\#,ProcedureUnspecified,BasisUnspecified,\\0,1\N\C,1,1.34606\H,2,1.0834,1,116.808\C,1,1.34606,2,115.185,3,-180,0\H,4,1.0834,1,116.808,2,-180,0\C,2,1.39225,1,122.408,3,-180,0\H,6,1.0834,2,120.785,1,-180,0\N,6,1.34606,2,122.408,1,0,0\C,8,1.34606,6,115.185,2,0,0\H,9,1.0834,8,116.808,6,180,0\\\@
+1\1\tp-linux1\SP\ProcedureUnspecified\BasisUnspecified\244\thomas\MonJan2310:55:362017MonJan2310:55:362017\0\\#,ProcedureUnspecified,BasisUnspecified,\\0,1\N\C,1,1.34606\H,2,1.0834,1,116.808\C,1,1.34606,2,115.185,3,-180,0\H,4,1.0834,1,116.808,2,-180,0\C,2,1.39225,1,122.408,3,-180,0\H,6,1.0834,2,120.785,1,-180,0\N,6,1.34606,2,122.408,1,0,0\C,8,1.34606,6,115.185,2,0,0\H,9,1.0834,8,116.808,6,180,0\\\@
 
- Total job time:  11.67s(wall), 11.06s(cpu) 
- Mon Jan 16 17:12:49 2017
+ Total job time:  11.17s(wall), 10.18s(cpu) 
+ Mon Jan 23 10:55:36 2017
 
         *************************************************************
         *                                                           *
@@ -434,16 +434,16 @@ Archival summary:
 now end server 0 ... 
 cleanup process ... done
 
-Running Job 2 of 3 21-22_SRC_6-311+G_pyr.inp
-qchem 21-22_SRC_6-311+G_pyr.inp_8194.1 /scratch/qchem/qchem8194/ 1
-/mnt/software/qchem/bin/mpi/mpirun_qchem -machinefile /mnt/software/qchem/bin/mpi/machines -np 1 /mnt/software/qchem/exe/qcprog.exe 21-22_SRC_6-311+G_pyr.inp_8194.1 /scratch/qchem/qchem8194/
+Running Job 2 of 3 21-22_SRC_6-311+G_pyr_b3lyp.inp
+qchem 21-22_SRC_6-311+G_pyr_b3lyp.inp_12798.1 /scratch/qchem/qchem12798/ 1
+/mnt/software/qchem/bin/mpi/mpirun_qchem -machinefile /mnt/software/qchem/bin/mpi/machines -np 1 /mnt/software/qchem/exe/qcprog.exe 21-22_SRC_6-311+G_pyr_b3lyp.inp_12798.1 /scratch/qchem/qchem12798/
 
 Process 0 of 1 is on tp-linux1 - thread support 0
 initial socket setup ...start
 initial socket setup ...done 
 now start server 0 ... 
 
-cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1016729604 > /scratch/qchem/qchem8194/lic.dat
+cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 984931002 > /scratch/qchem/qchem12798/lic.dat
                   Welcome to Q-Chem
      A Quantum Leap Into The Future Of Chemistry
 
@@ -502,12 +502,12 @@ cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1016729604 > /scratch/qch
  Parts of Q-Chem use Armadillo 5.200.1 (Boston Tea Smuggler).
  http://arma.sourceforge.net/
 
- Q-Chem begins on Mon Jan 16 17:12:53 2017  
+ Q-Chem begins on Mon Jan 23 10:55:39 2017  
 
 Host: 
 0
 
-     Scratch files written to /scratch/qchem/qchem8194//
+     Scratch files written to /scratch/qchem/qchem12798//
  Nov1815 1189b_ 19540  19532 5443   
  Parallel job on  1  processors
 Processing $rem in /mnt/software/qchem/config/preferences.
@@ -533,7 +533,7 @@ UNRESTRICTED      TRUE
 $end
 
 $swap_occupied_virtual
-beta   21  22	!beta electron in RHF HOMO moved to RHF LUMO
+beta   21  22        !beta electron in RHF HOMO moved to RHF LUMO
 $end
 
 --------------------------------------------------------------
@@ -580,7 +580,7 @@ $end
    H ( 10)  4.832065  4.134320  2.501250
  
  tim1(1): 
-  4.000000000000004E-003
+  0.000000000000000E+000
  tim1(2): 
   0.000000000000000E+000
  A cutoff of  1.0D-08 yielded   1110 shell pairs
@@ -649,7 +649,7 @@ $end
  Using SG-1 standard quadrature grid
  SCF converges when DIIS error is below 1.0E-05
  CPU 0.00 s  wall 0.00 s
- CPU 1.35 s  wall 1.35 s
+ CPU 1.20 s  wall 1.20 s
  MOM overlap:    20.9959854359 / 21
  MOM overlap:    20.9938042728 / 21
  ---------------------------------------
@@ -662,28 +662,28 @@ $end
  MOM overlap:    20.9984655289 / 21
     2    -264.2452951107      1.15E-03
  CPU 0.00 s  wall 0.00 s
- CPU 1.05 s  wall 1.05 s
+ CPU 0.92 s  wall 0.92 s
  MOM overlap:    20.9999263730 / 21
  MOM overlap:    20.9998379276 / 21
     3    -264.2481873439      3.87E-04
  CPU 0.00 s  wall 0.00 s
- CPU 0.87 s  wall 0.87 s
+ CPU 0.89 s  wall 0.89 s
  MOM overlap:    20.9999849739 / 21
  MOM overlap:    20.9999889532 / 21
     4    -264.2485740141      4.00E-05
  CPU 0.00 s  wall 0.00 s
- CPU 0.83 s  wall 0.83 s
+ CPU 0.87 s  wall 0.87 s
  MOM overlap:    20.9999987999 / 21
  MOM overlap:    20.9999978631 / 21
     5    -264.2485366971      2.00E-05
  CPU 0.00 s  wall 0.00 s
- CPU 0.68 s  wall 0.68 s
+ CPU 0.82 s  wall 0.82 s
  MOM overlap:    20.9999995567 / 21
  MOM overlap:    20.9999996028 / 21
     6    -264.2486004716      7.05E-06 Convergence criterion met
  ---------------------------------------
  <S^2> = 1.0079
- SCF time:  CPU 8.70 s  wall 9.03 s
+ SCF time:  CPU 8.91 s  wall 9.23 s
  SCF   energy in the final basis set = -264.2486004716
  Total energy in the final basis set = -264.2486004716
  
@@ -818,10 +818,10 @@ $end
       XZZZ       0.0000   YZZZ       0.0000   ZZZZ     -46.3156
  -----------------------------------------------------------------
 Archival summary:
-1\1\tp-linux1\SP\ProcedureUnspecified\BasisUnspecified\244\thomas\MonJan1617:13:032017MonJan1617:13:032017\0\\#,ProcedureUnspecified,BasisUnspecified,\\0,1\N\C,1,1.34606\H,2,1.0834,1,116.808\C,1,1.34606,2,115.185,3,180,0\H,4,1.0834,1,116.808,2,-180,0\C,2,1.39225,1,122.408,3,-180,0\H,6,1.0834,2,120.785,1,-180,0\N,6,1.34606,2,122.408,1,0,0\C,8,1.34606,6,115.185,2,0,0\H,9,1.0834,8,116.808,6,-180,0\\\@
+1\1\tp-linux1\SP\ProcedureUnspecified\BasisUnspecified\244\thomas\MonJan2310:55:492017MonJan2310:55:492017\0\\#,ProcedureUnspecified,BasisUnspecified,\\0,1\N\C,1,1.34606\H,2,1.0834,1,116.808\C,1,1.34606,2,115.185,3,180,0\H,4,1.0834,1,116.808,2,-180,0\C,2,1.39225,1,122.408,3,-180,0\H,6,1.0834,2,120.785,1,-180,0\N,6,1.34606,2,122.408,1,0,0\C,8,1.34606,6,115.185,2,0,0\H,9,1.0834,8,116.808,6,-180,0\\\@
 
- Total job time:  9.41s(wall), 8.86s(cpu) 
- Mon Jan 16 17:13:03 2017
+ Total job time:  9.82s(wall), 9.08s(cpu) 
+ Mon Jan 23 10:55:49 2017
 
         *************************************************************
         *                                                           *
@@ -834,16 +834,16 @@ Archival summary:
 now end server 0 ... 
 cleanup process ... done
 
-Running Job 3 of 3 21-22_SRC_6-311+G_pyr.inp
-qchem 21-22_SRC_6-311+G_pyr.inp_8194.2 /scratch/qchem/qchem8194/ 1
-/mnt/software/qchem/bin/mpi/mpirun_qchem -machinefile /mnt/software/qchem/bin/mpi/machines -np 1 /mnt/software/qchem/exe/qcprog.exe 21-22_SRC_6-311+G_pyr.inp_8194.2 /scratch/qchem/qchem8194/
+Running Job 3 of 3 21-22_SRC_6-311+G_pyr_b3lyp.inp
+qchem 21-22_SRC_6-311+G_pyr_b3lyp.inp_12798.2 /scratch/qchem/qchem12798/ 1
+/mnt/software/qchem/bin/mpi/mpirun_qchem -machinefile /mnt/software/qchem/bin/mpi/machines -np 1 /mnt/software/qchem/exe/qcprog.exe 21-22_SRC_6-311+G_pyr_b3lyp.inp_12798.2 /scratch/qchem/qchem12798/
 
 Process 0 of 1 is on tp-linux1 - thread support 0
 initial socket setup ...start
 initial socket setup ...done 
 now start server 0 ... 
 
-cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1055895736 > /scratch/qchem/qchem8194/lic.dat
+cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1634210400 > /scratch/qchem/qchem12798/lic.dat
                   Welcome to Q-Chem
      A Quantum Leap Into The Future Of Chemistry
 
@@ -902,20 +902,16 @@ cmd = ssh tp-linux1 /mnt/software/qchem/bin/get_hostid 1055895736 > /scratch/qch
  Parts of Q-Chem use Armadillo 5.200.1 (Boston Tea Smuggler).
  http://arma.sourceforge.net/
 
- Q-Chem begins on Mon Jan 16 17:13:07 2017  
+ Q-Chem begins on Mon Jan 23 10:55:52 2017  
 
 Host: 
 0
 
-     Scratch files written to /scratch/qchem/qchem8194//
+     Scratch files written to /scratch/qchem/qchem12798//
  Nov1815 1189b_ 19540  19532 5443   
  Parallel job on  1  processors
 Processing $rem in /mnt/software/qchem/config/preferences.
  MEM_TOTAL  2000 
-
-Warning: disable incdft.
-
-Warning: disable incfock.
 
 Checking the input file for inconsistencies... 	...done.
 
@@ -928,7 +924,7 @@ read
 $end
 
 $rem
-exchange src1r1
+exchange b3lyp
 basis 6-311+G*
 cis_n_roots 30
 cis_triplets false
@@ -988,7 +984,7 @@ $end
    H ( 10)  4.832065  4.134320  2.501250
  
  tim1(1): 
-  0.000000000000000E+000
+  3.999999999999997E-003
  tim1(2): 
   0.000000000000000E+000
  A cutoff of  1.0D-11 yielded   1146 shell pairs
@@ -1001,9 +997,9 @@ $end
  Integral Job Info:
  Integral job number is                      11
  Integral operator is                         1
- short-range coefficients              50000000
- long-range coefficients               17000000
- Omega coefficients                         560
+ short-range coefficients                     0
+ long-range coefficients              100000000
+ Omega coefficients                           0
  if combine SR and LR in K                    0
  Integral screening is                        0
  Integral computing path is                   2
@@ -1038,105 +1034,70 @@ $end
  Guess MOs from SCF MO coefficient file
  Reading MOs from coefficient file
  Reading MOs from coefficient file
-
- Short-range corrected functional
- Long-range K will be added via erf
- Coulomb attenuation parameter = 0.56 bohr**(-1)
- Short-range K will be added via erfc
- Coulomb attenuation parameter = 2.45 bohr**(-1)
- C_LR = 0.17 and C_SR = 0.5 
-
  An unrestricted hybrid HF-DFT SCF calculation will be
  performed using Pulay DIIS extrapolation
- Exchange:     Short-Range Corrected Functional
- Correlation:  0.1900 VWN5 + 0.8100 LYP
+ Exchange:     0.2000 Hartree-Fock + 0.0800 Slater + 0.7200 B88
+ Correlation:  0.1900 VWN1RPA + 0.8100 LYP
  Using SG-1 standard quadrature grid
  SCF converges when DIIS error is below 1.0E-08
- K construction time:  CPU 0.59 s  wall 0.65 s
- K construction time:  CPU 0.61 s  wall 0.66 s
  CPU 0.00 s  wall 0.00 s
- CPU 1.57 s  wall 1.57 s
- MOM overlap:    20.9983304666 / 21
- MOM overlap:    20.9979449940 / 21
+ CPU 1.23 s  wall 1.23 s
+ MOM overlap:    20.9999999626 / 21
+ MOM overlap:    20.9999999356 / 21
  ---------------------------------------
   Cycle       Energy         DIIS Error
  ---------------------------------------
-    1    -264.5687957868      2.61E-03
- K construction time:  CPU 0.79 s  wall 0.84 s
- K construction time:  CPU 0.83 s  wall 0.88 s
+    1    -264.2487177271      2.10E-06
  CPU 0.00 s  wall 0.00 s
- CPU 1.27 s  wall 1.27 s
- MOM overlap:    20.9996387530 / 21
- MOM overlap:    20.9996075941 / 21
-    2    -264.5757629156      3.47E-04
- K construction time:  CPU 0.72 s  wall 0.77 s
- K construction time:  CPU 0.86 s  wall 0.91 s
+ CPU 1.02 s  wall 1.02 s
+ MOM overlap:    20.9999999882 / 21
+ MOM overlap:    20.9999999981 / 21
+    2    -264.2486823643      1.67E-06
  CPU 0.00 s  wall 0.00 s
- CPU 1.28 s  wall 1.28 s
- MOM overlap:    20.9999074395 / 21
- MOM overlap:    20.9998762032 / 21
-    3    -264.5758406279      3.02E-04
- K construction time:  CPU 0.75 s  wall 0.81 s
- K construction time:  CPU 0.91 s  wall 0.96 s
+ CPU 1.02 s  wall 1.02 s
+ MOM overlap:    20.9999999994 / 21
+ MOM overlap:    20.9999999983 / 21
+    3    -264.2486804738      8.92E-07
  CPU 0.00 s  wall 0.00 s
- CPU 1.12 s  wall 1.12 s
- MOM overlap:    20.9999948709 / 21
- MOM overlap:    20.9999966370 / 21
-    4    -264.5760900444      5.44E-05
- K construction time:  CPU 0.68 s  wall 0.72 s
- K construction time:  CPU 0.98 s  wall 1.04 s
+ CPU 0.98 s  wall 0.98 s
+ MOM overlap:    20.9999999970 / 21
+ MOM overlap:    20.9999999986 / 21
+    4    -264.2486798999      3.90E-07
  CPU 0.00 s  wall 0.00 s
- CPU 1.12 s  wall 1.13 s
- MOM overlap:    20.9999996942 / 21
- MOM overlap:    20.9999992966 / 21
-    5    -264.5760970109      2.27E-05
- K construction time:  CPU 0.62 s  wall 0.67 s
- K construction time:  CPU 0.78 s  wall 0.82 s
- CPU 0.00 s  wall 0.00 s
- CPU 1.16 s  wall 1.16 s
- MOM overlap:    20.9999998000 / 21
- MOM overlap:    20.9999998534 / 21
-    6    -264.5760984850      2.59E-06
- K construction time:  CPU 0.64 s  wall 0.69 s
- K construction time:  CPU 0.82 s  wall 0.87 s
- CPU 0.00 s  wall 0.00 s
- CPU 1.17 s  wall 1.17 s
- MOM overlap:    20.9999999510 / 21
- MOM overlap:    20.9999999551 / 21
-    7    -264.5760984553      1.11E-06
- K construction time:  CPU 0.78 s  wall 0.83 s
- K construction time:  CPU 0.84 s  wall 0.89 s
- CPU 0.00 s  wall 0.00 s
- CPU 1.14 s  wall 1.14 s
- MOM overlap:    20.9999999959 / 21
- MOM overlap:    20.9999999966 / 21
-    8    -264.5760982488      2.48E-07
- K construction time:  CPU 0.66 s  wall 0.71 s
- K construction time:  CPU 0.72 s  wall 0.77 s
- CPU 0.00 s  wall 0.00 s
- CPU 1.16 s  wall 1.16 s
+ CPU 1.01 s  wall 1.01 s
+ MOM overlap:    20.9999999999 / 21
  MOM overlap:    20.9999999998 / 21
+    5    -264.2486788952      2.39E-07
+ CPU 0.00 s  wall 0.00 s
+ CPU 0.96 s  wall 0.95 s
  MOM overlap:    20.9999999997 / 21
-    9    -264.5760981595      5.17E-08
- K construction time:  CPU 0.77 s  wall 0.83 s
- K construction time:  CPU 0.72 s  wall 0.78 s
+ MOM overlap:    20.9999999997 / 21
+    6    -264.2486785311      1.22E-07
  CPU 0.00 s  wall 0.00 s
- CPU 1.16 s  wall 1.16 s
+ CPU 0.96 s  wall 0.96 s
  MOM overlap:    21.0000000000 / 21
  MOM overlap:    21.0000000000 / 21
-   10    -264.5760982558      1.54E-08
- K construction time:  CPU 0.61 s  wall 0.66 s
- K construction time:  CPU 0.87 s  wall 0.92 s
+    7    -264.2486775681      5.93E-08
  CPU 0.00 s  wall 0.00 s
- CPU 1.15 s  wall 1.15 s
+ CPU 0.89 s  wall 0.89 s
  MOM overlap:    21.0000000000 / 21
  MOM overlap:    21.0000000000 / 21
-   11    -264.5760983067      2.06E-09 Convergence criterion met
+    8    -264.2486770763      2.31E-08
+ CPU 0.00 s  wall 0.00 s
+ CPU 0.88 s  wall 0.88 s
+ MOM overlap:    21.0000000000 / 21
+ MOM overlap:    21.0000000000 / 21
+    9    -264.2486773392      1.02E-08
+ CPU 0.00 s  wall 0.00 s
+ CPU 0.75 s  wall 0.75 s
+ MOM overlap:    21.0000000000 / 21
+ MOM overlap:    21.0000000000 / 21
+   10    -264.2486769886      3.48E-09 Convergence criterion met
  ---------------------------------------
- <S^2> = 1.0168
- SCF time:  CPU 34.02 s  wall 35.72 s
- SCF   energy in the final basis set = -264.5760983067
- Total energy in the final basis set = -264.5760983067
+ <S^2> = 1.0080
+ SCF time:  CPU 15.68 s  wall 16.24 s
+ SCF   energy in the final basis set = -264.2486769886
+ Total energy in the final basis set = -264.2486769886
 Max. subspace vectors    = 750
 Dim. of subspace vectors = 5166
 Room left in mega-array  = 7750000
@@ -1146,8 +1107,8 @@ Room left in mega-array  = 7750000
  Static memory may be insufficient to store the subspace vectors
 
  Direct TDDFT/TDA calculation will be performed
- Exchange:     Short-Range Corrected Functional
- Correlation:  0.1900 VWN5 + 0.8100 LYP
+ Exchange:     0.2000 Hartree-Fock + 0.0800 Slater + 0.7200 B88
+ Correlation:  0.1900 VWN1RPA + 0.8100 LYP
  Using SG-1 standard quadrature grid
  CIS energy converged when residual is below 10e- 6
    
@@ -1193,21 +1154,11 @@ Room left in mega-array  = 7750000
  ---------------------------------------------------
  Iter    Rts Conv    Rts Left    Ttl Dev     Max Dev
  ---------------------------------------------------
- CPU 0.00 s  wall 0.00 s
- CPU 17.51 s  wall 17.50 s
-   1         0          30      0.017274    0.002500
- CPU 0.00 s  wall 0.00 s
- CPU 18.00 s  wall 17.99 s
-   2         3          27      0.018830    0.002404
- CPU 0.00 s  wall 0.00 s
- CPU 16.58 s  wall 16.56 s
-   3        15          15      0.018740    0.002404
- CPU 0.00 s  wall 0.00 s
- CPU 10.08 s  wall 10.07 s
-   4        29           1      0.018740    0.002404
- CPU 0.00 s  wall 0.00 s
- CPU 1.27 s  wall 1.27 s
-   5        30           0      0.018740    0.002404    Roots Converged
+   1         0          30      0.011488    0.001227
+   2         2          28      0.010691    0.001092
+   3        16          14      0.010687    0.001092
+   4        28           2      0.010687    0.001092
+   5        30           0      0.010687    0.001092    Roots Converged
  ---------------------------------------------------
  
  
@@ -1215,241 +1166,241 @@ Room left in mega-array  = 7750000
          TDDFT/TDA Excitation Energies              
  ---------------------------------------------------
 
- Excited state   1: excitation energy (eV) =  395.6766
-    Total energy for state   1:   -250.035249320517
-    <S**2>     :  1.0199
-    Trans. Mom.:  0.0000 X  -0.0495 Y   0.0000 Z
-    Strength   :  0.0237
-    D(  1) --> V(  1) amplitude =  0.9990 beta
+ Excited state   1: excitation energy (eV) =  382.3096
+    Total energy for state   1:   -250.199056109197
+    <S**2>     :  1.0091
+    Trans. Mom.:  0.0000 X  -0.0511 Y   0.0000 Z
+    Strength   :  0.0244
+    D(  1) --> V(  1) amplitude =  0.9996 beta
 
- Excited state   2: excitation energy (eV) =  399.8644
-    Total energy for state   2:   -249.881352189615
-    <S**2>     :  1.0242
+ Excited state   2: excitation energy (eV) =  386.4030
+    Total energy for state   2:   -250.048628137230
+    <S**2>     :  1.0084
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  1) amplitude =  0.9872 alpha
+    D(  1) --> V(  1) amplitude =  0.9973 alpha
 
- Excited state   3: excitation energy (eV) =  402.7450
-    Total energy for state   3:   -249.775491270845
-    <S**2>     :  2.0183
+ Excited state   3: excitation energy (eV) =  387.7719
+    Total energy for state   3:   -249.998321106727
+    <S**2>     :  2.0095
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
     D(  1) --> V(  2) amplitude =  1.0000 beta
 
- Excited state   4: excitation energy (eV) =  402.9063
-    Total energy for state   4:   -249.769562937278
-    <S**2>     :  2.0154
+ Excited state   4: excitation energy (eV) =  387.9219
+    Total energy for state   4:   -249.992808366649
+    <S**2>     :  2.0065
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  2) amplitude =  0.9988 alpha
+    D(  1) --> V(  2) amplitude =  0.9991 alpha
 
- Excited state   5: excitation energy (eV) =  404.2165
-    Total energy for state   5:   -249.721413864717
-    <S**2>     :  2.6549
-    Trans. Mom.:  0.0000 X   0.0017 Y   0.0000 Z
+ Excited state   5: excitation energy (eV) =  389.4685
+    Total energy for state   5:   -249.935973102268
+    <S**2>     :  2.6383
+    Trans. Mom.:  0.0000 X   0.0011 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  3) amplitude =  0.9301 alpha
-    D(  1) --> V(  3) amplitude = -0.3363 beta
+    D(  1) --> V(  3) amplitude =  0.9373 alpha
+    D(  1) --> V(  3) amplitude =  0.3330 beta
 
- Excited state   6: excitation energy (eV) =  404.2598
-    Total energy for state   6:   -249.719823035666
-    <S**2>     :  1.3771
-    Trans. Mom.:  0.0000 X   0.0009 Y   0.0000 Z
+ Excited state   6: excitation energy (eV) =  389.5049
+    Total energy for state   6:   -249.934636109382
+    <S**2>     :  1.3772
+    Trans. Mom.:  0.0000 X  -0.0007 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  3) amplitude =  0.3404 alpha
-    D(  1) --> V(  3) amplitude =  0.9364 beta
+    D(  1) --> V(  3) amplitude = -0.3356 alpha
+    D(  1) --> V(  3) amplitude =  0.9398 beta
 
- Excited state   7: excitation energy (eV) =  404.7549
-    Total energy for state   7:   -249.701628405558
-    <S**2>     :  2.0176
+ Excited state   7: excitation energy (eV) =  389.9809
+    Total energy for state   7:   -249.917143164903
+    <S**2>     :  2.0079
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  4) amplitude =  0.9992 alpha
+    D(  1) --> V(  4) amplitude =  0.9989 alpha
 
- Excited state   8: excitation energy (eV) =  404.7771
-    Total energy for state   8:   -249.700813291410
-    <S**2>     :  2.0160
+ Excited state   8: excitation energy (eV) =  390.0098
+    Total energy for state   8:   -249.916080248055
+    <S**2>     :  2.0081
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
     D(  1) --> V(  4) amplitude =  0.9999 beta
 
- Excited state   9: excitation energy (eV) =  404.9720
-    Total energy for state   9:   -249.693650085920
-    <S**2>     :  2.4278
+ Excited state   9: excitation energy (eV) =  390.2855
+    Total energy for state   9:   -249.905947468062
+    <S**2>     :  2.4772
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  5) amplitude =  0.9729 alpha
-    D(  1) --> V(  5) amplitude = -0.2112 beta
+    D(  1) --> V(  5) amplitude =  0.9680 alpha
+    D(  1) --> V(  5) amplitude =  0.2423 beta
 
- Excited state  10: excitation energy (eV) =  404.9810
-    Total energy for state  10:   -249.693319527512
-    <S**2>     :  2.6196
-    Trans. Mom.:  0.0000 X   0.0000 Y  -0.0191 Z
-    Strength   :  0.0036
-    D(  1) --> V( 10) amplitude =  0.2413 alpha
-    D(  1) --> V( 18) amplitude =  0.2091 alpha
-    D(  1) --> V(  9) amplitude =  0.8152 beta
-    D(  1) --> V( 14) amplitude =  0.4770 beta
-
- Excited state  11: excitation energy (eV) =  405.0534
-    Total energy for state  11:   -249.690657966382
-    <S**2>     :  1.6024
+ Excited state  10: excitation energy (eV) =  390.3502
+    Total energy for state  10:   -249.903569100876
+    <S**2>     :  1.5373
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  5) amplitude =  0.2120 alpha
-    D(  1) --> V(  5) amplitude =  0.9761 beta
+    D(  1) --> V(  5) amplitude = -0.2427 alpha
+    D(  1) --> V(  5) amplitude =  0.9698 beta
 
- Excited state  12: excitation energy (eV) =  405.3046
-    Total energy for state  12:   -249.681426439224
-    <S**2>     :  2.7177
-    Trans. Mom.:  0.0000 X  -0.0022 Y   0.0000 Z
+ Excited state  11: excitation energy (eV) =  390.6533
+    Total energy for state  11:   -249.892433018017
+    <S**2>     :  2.8909
+    Trans. Mom.:  0.0000 X  -0.0007 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  7) amplitude =  0.9036 alpha
-    D(  1) --> V(  7) amplitude =  0.3784 beta
+    D(  1) --> V(  7) amplitude =  0.8470 alpha
+    D(  1) --> V(  7) amplitude =  0.5160 beta
 
- Excited state  13: excitation energy (eV) =  405.4570
-    Total energy for state  13:   -249.675829106314
-    <S**2>     :  1.3990
-    Trans. Mom.:  0.0000 X   0.0000 Y   0.0556 Z
-    Strength   :  0.0307
-    D(  1) --> V( 10) amplitude =  0.7612 alpha
-    D(  1) --> V( 18) amplitude =  0.5325 alpha
-    D(  1) --> V( 27) amplitude =  0.1582 alpha
-    D(  1) --> V(  9) amplitude = -0.2966 beta
+ Excited state  12: excitation energy (eV) =  390.6595
+    Total energy for state  12:   -249.892204846033
+    <S**2>     :  2.5187
+    Trans. Mom.:  0.0000 X   0.0000 Y   0.0256 Z
+    Strength   :  0.0063
+    D(  1) --> V( 10) amplitude =  0.2175 alpha
+    D(  1) --> V( 14) amplitude =  0.1538 alpha
+    D(  1) --> V(  9) amplitude =  0.8759 beta
+    D(  1) --> V( 14) amplitude =  0.4002 beta
 
- Excited state  14: excitation energy (eV) =  405.4789
-    Total energy for state  14:   -249.675021057667
-    <S**2>     :  1.3082
-    Trans. Mom.:  0.0000 X  -0.0003 Y   0.0000 Z
+ Excited state  13: excitation energy (eV) =  390.7761
+    Total energy for state  13:   -249.887919785492
+    <S**2>     :  2.1800
+    Trans. Mom.: -0.0061 X   0.0000 Y   0.0000 Z
+    Strength   :  0.0004
+    D(  1) --> V(  6) amplitude =  0.9944 alpha
+
+ Excited state  14: excitation energy (eV) =  390.7850
+    Total energy for state  14:   -249.887592853072
+    <S**2>     :  1.1218
+    Trans. Mom.:  0.0000 X  -0.0013 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  7) amplitude = -0.3835 alpha
-    D(  1) --> V(  7) amplitude =  0.9186 beta
+    D(  1) --> V(  7) amplitude = -0.5153 alpha
+    D(  1) --> V(  7) amplitude =  0.8493 beta
 
- Excited state  15: excitation energy (eV) =  405.5151
-    Total energy for state  15:   -249.673691303738
-    <S**2>     :  2.1881
-    Trans. Mom.:  0.0074 X   0.0000 Y   0.0000 Z
-    Strength   :  0.0005
-    D(  1) --> V(  6) amplitude =  0.9938 alpha
-
- Excited state  16: excitation energy (eV) =  405.5506
-    Total energy for state  16:   -249.672385889055
-    <S**2>     :  1.8451
-    Trans. Mom.: -0.0051 X   0.0000 Y   0.0000 Z
+ Excited state  15: excitation energy (eV) =  390.8069
+    Total energy for state  15:   -249.886786011119
+    <S**2>     :  1.8357
+    Trans. Mom.:  0.0053 X   0.0000 Y   0.0000 Z
     Strength   :  0.0003
-    D(  1) --> V(  6) amplitude =  0.9963 beta
+    D(  1) --> V(  6) amplitude =  0.9962 beta
 
- Excited state  17: excitation energy (eV) =  405.6762
-    Total energy for state  17:   -249.667773712572
-    <S**2>     :  2.0179
+ Excited state  16: excitation energy (eV) =  390.8907
+    Total energy for state  16:   -249.883707462203
+    <S**2>     :  2.0182
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
     D(  1) --> V(  8) amplitude =  1.0000 beta
 
- Excited state  18: excitation energy (eV) =  405.7102
-    Total energy for state  18:   -249.666520770102
-    <S**2>     :  2.0155
+ Excited state  17: excitation energy (eV) =  390.9114
+    Total energy for state  17:   -249.882946133990
+    <S**2>     :  1.9977
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
     D(  1) --> V(  8) amplitude =  0.9990 alpha
 
- Excited state  19: excitation energy (eV) =  406.1723
-    Total energy for state  19:   -249.649539389615
-    <S**2>     :  2.5201
-    Trans. Mom.:  0.0000 X  -0.0007 Y   0.0000 Z
-    Strength   :  0.0000
-    D(  1) --> V(  9) amplitude = -0.2604 alpha
-    D(  1) --> V( 10) amplitude =  0.9646 beta
+ Excited state  18: excitation energy (eV) =  391.1792
+    Total energy for state  18:   -249.873104686530
+    <S**2>     :  1.4934
+    Trans. Mom.:  0.0000 X   0.0000 Y  -0.0489 Z
+    Strength   :  0.0229
+    D(  1) --> V( 10) amplitude =  0.8734 alpha
+    D(  1) --> V( 14) amplitude =  0.3991 alpha
+    D(  1) --> V(  9) amplitude = -0.2582 beta
 
- Excited state  20: excitation energy (eV) =  406.1989
-    Total energy for state  20:   -249.648563714969
-    <S**2>     :  1.5126
-    Trans. Mom.:  0.0000 X  -0.0008 Y   0.0000 Z
+ Excited state  19: excitation energy (eV) =  391.4007
+    Total energy for state  19:   -249.864964017040
+    <S**2>     :  2.8153
+    Trans. Mom.:  0.0000 X   0.0007 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V(  9) amplitude =  0.9620 alpha
-    D(  1) --> V( 10) amplitude =  0.2621 beta
+    D(  1) --> V(  9) amplitude = -0.4540 alpha
+    D(  1) --> V( 10) amplitude =  0.8893 beta
 
- Excited state  21: excitation energy (eV) =  406.4729
-    Total energy for state  21:   -249.638494115626
-    <S**2>     :  2.0169
+ Excited state  20: excitation energy (eV) =  391.4274
+    Total energy for state  20:   -249.863983974673
+    <S**2>     :  1.1997
+    Trans. Mom.:  0.0000 X   0.0014 Y   0.0000 Z
+    Strength   :  0.0000
+    D(  1) --> V(  9) amplitude =  0.8857 alpha
+    D(  1) --> V( 10) amplitude =  0.4511 beta
+
+ Excited state  21: excitation energy (eV) =  391.7050
+    Total energy for state  21:   -249.853784170576
+    <S**2>     :  2.0082
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
     D(  1) --> V( 11) amplitude =  1.0000 beta
 
- Excited state  22: excitation energy (eV) =  406.5146
-    Total energy for state  22:   -249.636962877472
-    <S**2>     :  2.0166
+ Excited state  22: excitation energy (eV) =  391.7352
+    Total energy for state  22:   -249.852671923390
+    <S**2>     :  2.0078
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
     D(  1) --> V( 11) amplitude =  0.9999 alpha
 
- Excited state  23: excitation energy (eV) =  406.6831
-    Total energy for state  23:   -249.630767361066
-    <S**2>     :  2.6071
+ Excited state  23: excitation energy (eV) =  392.0083
+    Total energy for state  23:   -249.842634972612
+    <S**2>     :  2.7401
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V( 12) amplitude =  0.9405 alpha
-    D(  1) --> V( 12) amplitude =  0.3132 beta
+    D(  1) --> V( 12) amplitude =  0.9115 alpha
+    D(  1) --> V( 12) amplitude =  0.4015 beta
 
- Excited state  24: excitation energy (eV) =  406.8040
-    Total energy for state  24:   -249.626324705594
-    <S**2>     :  1.4209
+ Excited state  24: excitation energy (eV) =  392.1057
+    Total energy for state  24:   -249.839056035699
+    <S**2>     :  1.2724
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V( 12) amplitude = -0.3141 alpha
-    D(  1) --> V( 12) amplitude =  0.9481 beta
+    D(  1) --> V( 12) amplitude = -0.4020 alpha
+    D(  1) --> V( 12) amplitude =  0.9152 beta
 
- Excited state  25: excitation energy (eV) =  406.8115
-    Total energy for state  25:   -249.626051701090
-    <S**2>     :  2.3384
+ Excited state  25: excitation energy (eV) =  392.1174
+    Total energy for state  25:   -249.838626083852
+    <S**2>     :  2.5294
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V( 13) amplitude =  0.9764 alpha
-    D(  1) --> V( 13) amplitude =  0.1645 beta
+    D(  1) --> V( 13) amplitude =  0.9594 alpha
+    D(  1) --> V( 13) amplitude =  0.2714 beta
 
- Excited state  26: excitation energy (eV) =  406.8878
-    Total energy for state  26:   -249.623245936995
-    <S**2>     :  1.6916
+ Excited state  26: excitation energy (eV) =  392.1210
+    Total energy for state  26:   -249.838494669173
+    <S**2>     :  2.3076
+    Trans. Mom.:  0.0000 X   0.0000 Y   0.0091 Z
+    Strength   :  0.0008
+    D(  1) --> V(  9) amplitude = -0.4070 beta
+    D(  1) --> V( 14) amplitude =  0.9007 beta
+
+ Excited state  27: excitation energy (eV) =  392.1556
+    Total energy for state  27:   -249.837223735222
+    <S**2>     :  1.4852
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V( 13) amplitude = -0.1648 alpha
-    D(  1) --> V( 13) amplitude =  0.9859 beta
+    D(  1) --> V( 13) amplitude = -0.2715 alpha
+    D(  1) --> V( 13) amplitude =  0.9616 beta
 
- Excited state  27: excitation energy (eV) =  406.9445
-    Total energy for state  27:   -249.621162858115
-    <S**2>     :  2.3203
-    Trans. Mom.:  0.0000 X   0.0000 Y  -0.0081 Z
-    Strength   :  0.0007
-    D(  1) --> V(  9) amplitude = -0.4951 beta
-    D(  1) --> V( 14) amplitude =  0.8551 beta
+ Excited state  28: excitation energy (eV) =  392.2809
+    Total energy for state  28:   -249.832619312602
+    <S**2>     :  1.7046
+    Trans. Mom.:  0.0000 X   0.0000 Y  -0.0261 Z
+    Strength   :  0.0066
+    D(  1) --> V( 10) amplitude = -0.4183 alpha
+    D(  1) --> V( 14) amplitude =  0.8948 alpha
+    D(  1) --> V( 14) amplitude = -0.1528 beta
 
- Excited state  28: excitation energy (eV) =  407.0732
-    Total energy for state  28:   -249.616434038577
-    <S**2>     :  1.7106
-    Trans. Mom.:  0.0000 X   0.0000 Y   0.0231 Z
-    Strength   :  0.0053
-    D(  1) --> V( 10) amplitude = -0.5821 alpha
-    D(  1) --> V( 18) amplitude =  0.7941 alpha
-
- Excited state  29: excitation energy (eV) =  407.7669
-    Total energy for state  29:   -249.590941969943
-    <S**2>     :  2.0173
+ Excited state  29: excitation energy (eV) =  392.9780
+    Total energy for state  29:   -249.807000271405
+    <S**2>     :  2.0084
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V( 15) amplitude =  0.9996 beta
+    D(  1) --> V( 15) amplitude =  0.9994 beta
 
- Excited state  30: excitation energy (eV) =  407.8122
-    Total energy for state  30:   -249.589275602133
-    <S**2>     :  2.0163
+ Excited state  30: excitation energy (eV) =  393.0111
+    Total energy for state  30:   -249.805783221183
+    <S**2>     :  2.0076
     Trans. Mom.:  0.0000 X   0.0000 Y   0.0000 Z
     Strength   :  0.0000
-    D(  1) --> V( 14) amplitude =  0.9987 alpha
+    D(  1) --> V( 15) amplitude =  0.9982 alpha
  
  ---------------------------------------------------
   Timing summary (seconds)
-  CPU time        203.02s
+  CPU time        145.93s
   System time       0.00s
-  Wall time       203.67s
+  Wall time       146.11s
  
  --------------------------------------------------------------
              Orbital Energies (a.u.) and Symmetries
@@ -1457,86 +1408,86 @@ Room left in mega-array  = 7750000
  
  Alpha MOs, Unrestricted
  -- Occupied --                  
--14.880 -14.880 -10.683 -10.683 -10.682 -10.682  -1.043  -0.970
+-14.343 -14.343 -10.231 -10.231 -10.230 -10.230  -0.990  -0.918
   1 B2u   1 Ag    1 B3u   2 Ag    2 B2u   1 B1g   3 Ag    3 B2u                
- -0.828  -0.707  -0.698  -0.566  -0.549  -0.523  -0.469  -0.419
+ -0.790  -0.676  -0.671  -0.549  -0.532  -0.505  -0.456  -0.422
   2 B3u   4 Ag    2 B1g   5 Ag    3 B3u   4 B2u   4 B3u   1 B1u                
- -0.417  -0.381  -0.319  -0.310  -0.271
+ -0.405  -0.359  -0.326  -0.295  -0.279
   3 B1g   5 B2u   1 B3g   6 Ag    1 B2g                                        
  -- Virtual --                   
- -0.047  -0.022   0.004   0.019   0.031   0.047   0.052   0.058
+ -0.057  -0.032   0.002   0.017   0.031   0.046   0.050   0.056
   2 B1u   1 Au    7 Ag    5 B3u   6 B2u   4 B1g   8 Ag    3 B1u                
-  0.078   0.080   0.085   0.095   0.098   0.135   0.140   0.140
-  9 Ag    2 B3g   2 B2g   7 B2u   6 B3u   7 B3u   8 B2u   2 Au                 
-  0.146   0.146   0.169   0.193   0.200   0.203   0.203   0.213
-  5 B1g   3 B3g  10 Ag    8 B3u   6 B1g   9 B2u   4 B1u   7 B1g                
-  0.216   0.235   0.256   0.259   0.277   0.279   0.299   0.302
- 11 Ag   12 Ag    4 B3g  10 B2u   9 B3u  13 Ag   10 B3u   8 B1g                
-  0.324   0.346   0.370   0.453   0.490   0.512   0.539   0.555
- 11 B2u  12 B2u   9 B1g  14 Ag   13 B2u  11 B3u   5 B1u  15 Ag                 
-  0.557   0.571   0.581   0.612   0.623   0.643   0.708   0.743
- 10 B1g   3 B2g  12 B3u   5 B3g   3 Au   11 B1g  14 B2u  16 Ag                 
-  0.749   0.771   0.789   0.808   0.826   0.839   0.851   0.886
+  0.076   0.077   0.083   0.094   0.097   0.129   0.134   0.137
+  9 Ag    2 B3g   2 B2g   7 B2u   6 B3u   3 B3g   7 B3u   2 Au                 
+  0.139   0.145   0.165   0.187   0.199   0.199   0.199   0.208
+  8 B2u   5 B1g  10 Ag    8 B3u   9 B2u   4 B1u   6 B1g   7 B1g                
+  0.209   0.233   0.252   0.257   0.272   0.274   0.287   0.295
+ 11 Ag   12 Ag    4 B3g  10 B2u  13 Ag    9 B3u  10 B3u   8 B1g                
+  0.317   0.335   0.358   0.445   0.474   0.498   0.521   0.533
+ 11 B2u  12 B2u   9 B1g  14 Ag   13 B2u  11 B3u   5 B1u  10 B1g                
+  0.537   0.555   0.569   0.593   0.604   0.624   0.676   0.718
+ 15 Ag    3 B2g  12 B3u   5 B3g   3 Au   11 B1g  14 B2u  16 Ag                 
+  0.720   0.761   0.763   0.791   0.806   0.821   0.825   0.855
  15 B2u  16 B2u  12 B1g  13 B3u  17 Ag   13 B1g  14 B3u   6 B1u                
-  0.902   0.959   0.959   0.978   0.987   1.007   1.084   1.086
+  0.884   0.929   0.940   0.958   0.963   0.990   1.062   1.062
  18 Ag    6 B3g  17 B2u  18 B2u  14 B1g  15 B3u   4 B2g   7 B1u                
-  1.115   1.180   1.239   1.313   1.366   1.397   1.410   1.496
+  1.094   1.154   1.211   1.285   1.340   1.366   1.380   1.467
  15 B1g  19 Ag    5 B2g   8 B1u  20 Ag    4 Au    7 B3g  19 B2u                
-  1.558   1.610   1.614   1.667   1.745   1.864   1.865   1.897
- 16 B3u  20 B2u  21 Ag   17 B3u  22 Ag    5 Au   18 B3u  16 B1g                
-  1.963   2.028   2.134   2.245   2.300   2.304   2.340   2.340
+  1.522   1.571   1.578   1.634   1.699   1.824   1.824   1.860
+ 16 B3u  20 B2u  21 Ag   17 B3u  22 Ag   18 B3u   5 Au   16 B1g                
+  1.919   1.979   2.080   2.187   2.245   2.252   2.281   2.283
   8 B3g  21 B2u  17 B1g  22 B2u   9 B1u  18 B1g  23 B2u  23 Ag                 
-  2.378   2.417   2.487   2.657   2.707   2.802   2.821   2.826
-  6 B2g   9 B3g  19 B3u  24 Ag    6 Au   10 B1u  25 Ag   20 B3u                
-  2.844   2.872   2.901   2.965   3.020   3.032   3.270   3.297
+  2.314   2.361   2.419   2.593   2.646   2.713   2.752   2.753
+  6 B2g   9 B3g  19 B3u  24 Ag    6 Au   10 B1u  20 B3u  25 Ag                 
+  2.779   2.788   2.823   2.877   2.933   2.962   3.172   3.198
  24 B2u   7 B2g  19 B1g   7 Au   10 B3g  20 B1g  26 Ag   21 B3u                
-  3.432   3.478   3.507   3.534   3.534   3.985   3.998   4.002
+  3.342   3.384   3.413   3.434   3.456   3.856   3.895   3.896
  25 B2u  22 B3u  21 B1g  27 Ag   26 B2u  11 B1u  22 B1g  27 B2u                
-  4.073   4.316   4.668   4.887   5.429  23.960  24.085  24.394
+  3.945   4.197   4.553   4.757   5.302  23.550  23.675  23.982
  11 B3g  28 Ag   28 B2u  23 B3u  23 B1g  29 Ag   24 B3u  24 B1g                
- 24.409  35.986  36.159
+ 23.998  35.463  35.637
  29 B2u  30 Ag   30 B2u                                                        
  
  Beta MOs, Unrestricted
  -- Occupied --                  
--14.880 -14.880 -10.683 -10.683 -10.682 -10.682  -1.043  -0.970
-  1 B2u   1 Ag    1 B3u   2 Ag    1 B1g   2 B2u   3 Ag    3 B2u                
- -0.825  -0.700  -0.692  -0.547  -0.537  -0.517  -0.460  -0.452
+-14.343 -14.343 -10.230 -10.230 -10.230 -10.230  -0.990  -0.918
+  1 B2u   1 Ag    1 B3u   2 Ag    2 B2u   1 B1g   3 Ag    3 B2u                
+ -0.789  -0.672  -0.667  -0.537  -0.524  -0.501  -0.449  -0.443
   2 B3u   4 Ag    2 B1g   5 Ag    3 B3u   4 B2u   4 B3u   1 B1u                
- -0.413  -0.371  -0.296  -0.290  -0.138
+ -0.402  -0.360  -0.302  -0.295  -0.138
   3 B1g   1 B3g   5 B2u   1 B2g   2 B1u                                        
  -- Virtual --                   
- -0.204  -0.028   0.004   0.019   0.034   0.048   0.054   0.056
+ -0.207  -0.038   0.003   0.018   0.032   0.047   0.052   0.054
   6 Ag    1 Au    7 Ag    5 B3u   6 B2u   4 B1g   8 Ag    3 B1u                
-  0.072   0.076   0.083   0.097   0.099   0.122   0.134   0.140
+  0.070   0.075   0.082   0.096   0.097   0.112   0.132   0.137
   2 B3g   9 Ag    2 B2g   7 B2u   6 B3u   3 B3g   7 B3u   2 Au                 
-  0.142   0.147   0.172   0.195   0.196   0.201   0.206   0.213
+  0.141   0.146   0.167   0.189   0.194   0.200   0.202   0.208
   8 B2u   5 B1g  10 Ag    8 B3u   4 B1u   6 B1g   9 B2u   7 B1g                
-  0.217   0.239   0.250   0.264   0.278   0.282   0.304   0.305
- 11 Ag   12 Ag    4 B3g  10 B2u   9 B3u  13 Ag    8 B1g  10 B3u                
-  0.325   0.352   0.370   0.457   0.493   0.517   0.532   0.563
+  0.209   0.236   0.248   0.260   0.273   0.275   0.291   0.298
+ 11 Ag   12 Ag    4 B3g  10 B2u  13 Ag    9 B3u  10 B3u   8 B1g                
+  0.318   0.339   0.357   0.448   0.476   0.500   0.515   0.539
  11 B2u  12 B2u   9 B1g  14 Ag   13 B2u  11 B3u   5 B1u  10 B1g                
-  0.564   0.564   0.585   0.608   0.620   0.646   0.710   0.744
+  0.542   0.549   0.572   0.590   0.601   0.627   0.678   0.719
  15 Ag    3 B2g  12 B3u   5 B3g   3 Au   11 B1g  14 B2u  16 Ag                 
-  0.753   0.772   0.797   0.806   0.827   0.840   0.852   0.858
+  0.724   0.761   0.769   0.789   0.807   0.820   0.826   0.836
  15 B2u  16 B2u  12 B1g  13 B3u  17 Ag   13 B1g  14 B3u   6 B1u                
-  0.919   0.934   0.963   0.989   0.998   1.009   1.078   1.081
+  0.896   0.912   0.943   0.965   0.972   0.992   1.056   1.058
  18 Ag    6 B3g  17 B2u  14 B1g  18 B2u  15 B3u   4 B2g   7 B1u                
-  1.117   1.180   1.232   1.311   1.367   1.387   1.409   1.497
+  1.096   1.152   1.205   1.283   1.340   1.357   1.378   1.466
  15 B1g  19 Ag    5 B2g   8 B1u  20 Ag    4 Au    7 B3g  19 B2u                
-  1.563   1.618   1.621   1.673   1.750   1.860   1.864   1.897
- 16 B3u  21 Ag   20 B2u  17 B3u  22 Ag    5 Au   18 B3u  16 B1g                
-  1.961   2.029   2.142   2.245   2.298   2.309   2.347   2.351
+  1.526   1.580   1.580   1.638   1.703   1.820   1.821   1.860
+ 16 B3u  20 B2u  21 Ag   17 B3u  22 Ag    5 Au   18 B3u  16 B1g                
+  1.917   1.980   2.087   2.187   2.243   2.255   2.288   2.292
   8 B3g  21 B2u  17 B1g  22 B2u   9 B1u  18 B1g  23 B2u  23 Ag                 
-  2.359   2.413   2.491   2.646   2.692   2.796   2.832   2.833
-  6 B2g   9 B3g  19 B3u  24 Ag    6 Au   10 B1u  24 B2u  25 Ag                 
-  2.846   2.865   2.913   2.959   3.014   3.041   3.273   3.302
- 20 B3u   7 B2g  19 B1g   7 Au   10 B3g  20 B1g  26 Ag   21 B3u                
-  3.444   3.481   3.509   3.539   3.541   3.949   4.002   4.012
+  2.299   2.358   2.423   2.584   2.632   2.708   2.763   2.768
+  6 B2g   9 B3g  19 B3u  24 Ag    6 Au   10 B1u  25 Ag   20 B3u                
+  2.770   2.781   2.833   2.871   2.927   2.971   3.176   3.202
+ 24 B2u   7 B2g  19 B1g   7 Au   10 B3g  20 B1g  26 Ag   21 B3u                
+  3.352   3.387   3.415   3.439   3.463   3.828   3.898   3.904
  25 B2u  22 B3u  21 B1g  27 Ag   26 B2u  11 B1u  22 B1g  27 B2u                
-  4.039   4.343   4.687   4.887   5.429  23.961  24.085  24.394
+  3.917   4.219   4.568   4.756   5.302  23.551  23.675  23.982
  11 B3g  28 Ag   28 B2u  23 B3u  23 B1g  29 Ag   24 B3u  24 B1g                
- 24.409  35.987  36.160
+ 23.998  35.464  35.637
  29 B2u  30 Ag   30 B2u                                                        
  --------------------------------------------------------------
  
@@ -1544,16 +1495,16 @@ Room left in mega-array  = 7750000
 
      Atom                 Charge (a.u.)    Spin (a.u.)
   --------------------------------------------------------
-      1 C                    -0.261640      -0.049431
-      2 C                    -0.261640      -0.049431
-      3 N                     0.036092       0.021289
-      4 N                     0.036092       0.021289
-      5 C                    -0.261640      -0.049431
-      6 C                    -0.261640      -0.049431
-      7 H                     0.243594       0.038787
-      8 H                     0.243594       0.038787
-      9 H                     0.243594       0.038787
-     10 H                     0.243594       0.038787
+      1 C                    -0.268803      -0.055749
+      2 C                    -0.268803      -0.055749
+      3 N                     0.053704       0.035822
+      4 N                     0.053704       0.035822
+      5 C                    -0.268803      -0.055749
+      6 C                    -0.268803      -0.055749
+      7 H                     0.241951       0.037838
+      8 H                     0.241951       0.037838
+      9 H                     0.241951       0.037838
+     10 H                     0.241951       0.037838
   --------------------------------------------------------
   Sum of atomic charges =     0.000000
   Sum of spin   charges =     0.000000
@@ -1567,25 +1518,25 @@ Room left in mega-array  = 7750000
          X       0.0000      Y       0.0000      Z       0.0000
        Tot       0.0000
     Quadrupole Moments (Debye-Ang)
-        XX     -26.8535     XY       0.0000     YY     -38.0484
-        XZ       0.0000     YZ       0.0000     ZZ     -38.4617
+        XX     -27.0168     XY       0.0000     YY     -38.2297
+        XZ       0.0000     YZ       0.0000     ZZ     -38.3667
     Octopole Moments (Debye-Ang^2)
        XXX       0.0000    XXY       0.0000    XYY       0.0000
        YYY       0.0000    XXZ       0.0000    XYZ       0.0000
        YYZ       0.0000    XZZ       0.0000    YZZ       0.0000
        ZZZ       0.0000
     Hexadecapole Moments (Debye-Ang^3)
-      XXXX    -229.8080   XXXY       0.0000   XXYY     -67.5739
-      XYYY       0.0000   YYYY    -283.4173   XXXZ       0.0000
+      XXXX    -232.5520   XXXY       0.0000   XXYY     -68.4910
+      XYYY       0.0000   YYYY    -286.0788   XXXZ       0.0000
       XXYZ       0.0000   XYYZ       0.0000   YYYZ       0.0000
-      XXZZ     -59.9469   XYZZ       0.0000   YYZZ     -54.2288
-      XZZZ       0.0000   YZZZ       0.0000   ZZZZ     -46.4846
+      XXZZ     -60.0510   XYZZ       0.0000   YYZZ     -54.5303
+      XZZZ       0.0000   YZZZ       0.0000   ZZZZ     -46.3161
  -----------------------------------------------------------------
 Archival summary:
-1\1\tp-linux1\SP\ProcedureUnspecified\BasisUnspecified\244\thomas\MonJan1617:17:072017MonJan1617:17:072017\0\\#,ProcedureUnspecified,BasisUnspecified,\\0,1\N\C,1,1.34606\H,2,1.0834,1,116.808\C,1,1.34606,2,115.185,3,180,0\H,4,1.0834,1,116.808,2,-180,0\C,2,1.39225,1,122.408,3,-180,0\H,6,1.0834,2,120.785,1,-180,0\N,6,1.34606,2,122.408,1,0,0\C,8,1.34606,6,115.185,2,0,0\H,9,1.0834,8,116.808,6,-180,0\\\@
+1\1\tp-linux1\SP\ProcedureUnspecified\BasisUnspecified\244\thomas\MonJan2310:58:352017MonJan2310:58:352017\0\\#,ProcedureUnspecified,BasisUnspecified,\\0,1\N\C,1,1.34606\H,2,1.0834,1,116.808\C,1,1.34606,2,115.185,3,180,0\H,4,1.0834,1,116.808,2,-180,0\C,2,1.39225,1,122.408,3,-180,0\H,6,1.0834,2,120.785,1,-180,0\N,6,1.34606,2,122.408,1,0,0\C,8,1.34606,6,115.185,2,0,0\H,9,1.0834,8,116.808,6,-180,0\\\@
 
- Total job time:  239.84s(wall), 237.24s(cpu) 
- Mon Jan 16 17:17:07 2017
+ Total job time:  163.06s(wall), 161.82s(cpu) 
+ Mon Jan 23 10:58:35 2017
 
         *************************************************************
         *                                                           *
@@ -1597,6 +1548,6 @@ Archival summary:
 0 sent ACK to 0 
 now end server 0 ... 
 cleanup process ... done
-remove work dirs /scratch/qchem/qchem8194.0 -- /scratch/qchem/qchem8194.0
-rm -rf /scratch/qchem/qchem8194.0
-rm -rf /scratch/qchem/qchem8194
+remove work dirs /scratch/qchem/qchem12798.0 -- /scratch/qchem/qchem12798.0
+rm -rf /scratch/qchem/qchem12798.0
+rm -rf /scratch/qchem/qchem12798

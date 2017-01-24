@@ -1,0 +1,67 @@
+$comment
+XAS calculation for the 2b valence excited for water using TDDFT SRC1 + 6-311+G* basis set
+$end
+
+$molecule
+0 1
+ C    -0.696126    -1.136419     0.000000
+ C     0.696126    -1.136419     0.000000
+ N    -1.417532     0.000000     0.000000
+ N     1.417532     0.000000     0.000000
+ C     0.696126     1.136419     0.000000
+ C    -0.696126     1.136419     0.000000
+ H     1.250625     2.067160     0.000000
+ H    -1.250625     2.067160     0.000000
+ H     1.250625    -2.067160     0.000000
+ H    -1.250625    -2.067160     0.000000
+$end
+
+$rem
+   JOBTYPE           sp
+   METHOD            B3LYP
+   BASIS             6-311+G*
+   UNRESTRICTED TRUE
+$end
+
+@@@
+
+$molecule
+read
+$end
+
+$rem
+   JOBTYPE           SP
+   METHOD            B3LYP
+   BASIS             6-311+G*
+   SCF_GUESS         READ
+   MOM_START         1
+   UNRESTRICTED      TRUE
+$end
+
+$swap_occupied_virtual
+   beta   21  22        !beta electron in RHF HOMO moved to RHF LUMO
+$end
+
+@@@
+
+$molecule
+read
+$end
+
+$rem
+exchange b3lyp
+basis 6-311+G*
+cis_n_roots 30
+cis_triplets false
+trnss true                      !reduced single excitation space used
+trtype 3                        !to be defined in solute keyword, so oribtal 1 (1s O)
+n_sol 1
+unrestricted true
+mom_start 1
+scf_guess read
+$end
+
+$solute
+1
+$end
+
