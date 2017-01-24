@@ -126,7 +126,7 @@ def read_gwpcentres(Nstate,istate):
       print "Error: There are " + str(Nt*Ng) +  " =/= Nt*Ng rows of displacement factors! Exiting..."
       return
    ##################################################
-   return Time,v 
+   return Nmode,Ng,Time,v 
 
 
 def read_output(Nstate,Ng):
@@ -238,23 +238,6 @@ def read_src(SRCoutput):
    return XAS
 
 
-def displace_coords(Coords,imode,Factor):
-   ##################################################
-   # displace_coords: Displace coords from xyz file 'xyzfile' along mode 'imode' (0<int<=Nmode) by 'Factor' (float)
-   # Inputs:	Coords (float list), coordinates as column vector with the format X1,Y1,Z1,X2,Y2,Z2,...
-   #		imode (int), the coordinates are displaced along mode number 'imode'
-   # 		Factor (float), the coordinates are displaced along mode number 'imode' by 'Factor' atomic units  
-   # Outputs:	D (float list), displaced coordinates with same formatting as 'Coords'
-   ##################################################
-   Nat=len(Coords)/3				# Number of atoms 
-   Displc=read_displacements(Nat,imode)		# Read normal mode displacements (vector of length 3*Nat)
-   D=[]
-   for i in range(3*Nat):			# Loop over coordinates
-      D.append(Coords[i] + Factor*Displc[i]) 	# Displaced coordinates
-   ################################################## 
-   return D
-
-
 def generate_spectrum(XAS):
    ##################################################
    # generate_spectrum: Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV) 
@@ -287,9 +270,61 @@ def generate_spectrum(XAS):
    return x,spect
 
 
+def displace_coords(Coords,imode,Factor):
+   ##################################################
+   # displace_coords: Displace coords from xyz file 'xyzfile' along mode 'imode' (0<int<=Nmode) by 'Factor' (float)
+   # Inputs:	Coords (float list), coordinates as column vector with the format X1,Y1,Z1,X2,Y2,Z2,...
+   #		imode (int), the coordinates are displaced along mode number 'imode'
+   # 		Factor (float), the coordinates are displaced along mode number 'imode' by 'Factor' atomic units  
+   # Outputs:	D (float list), displaced coordinates with same formatting as 'Coords'
+   ##################################################
+   Nat=len(Coords)/3				# Number of atoms 
+   Displc=read_displacements(Nat,imode)		# Read normal mode displacements (vector of length 3*Nat)
+   D=[]
+   for i in range(3*Nat):			# Loop over coordinates
+      D.append(Coords[i] + Factor*Displc[i]) 	# Displaced coordinates
+   ################################################## 
+   return D
+
+
 def linspace(a, b, n=100):
     # Matlab-like linspace function
     if n < 2:
         return b
     diff = (float(b) - a)/(n - 1)
     return [diff * i + a  for i in range(n)]
+
+
+def generator_(tstep,istate):
+   ##################################################
+   # generator_: Generates xyz files for all modes and all Gaussians for time-step 'tstep' and state 'istate'
+   # Inputs:    tstep (int), time-step number (0,1,2,...)
+   #            istate (int), electronic state (1,2)
+   ##################################################
+
+   Nstate=2 				# Number of states: 2 state model
+   Modes=[11,3,14,8] 			# Known from comparison to pyrazine 4-mode model paper 
+   xyzfile='inputs/equilibrium.xyz'	# initial xyz coordinates
+   
+   AtomList,R0 = read_xyz(xyzfile)
+   Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate)
+  
+   print 'Time = ' + str(Time[tstep]) + ' (au)'
+   
+   ####################################################
+   
+   D=R0						# Starting coordinates
+   for i in range(len(Modes)):			# Loop over modes
+      imode=Modes[i]				# Mode number
+      for j in range(Ng):			# Loop over Gaussians
+         # v[column][row] = v[mode index][Gaussian index]
+         Factor = v[i][Ng*tstep +j]		# Displacement factor in atomic units of length
+	 # print Factor
+         D = displace_coords(D,imode,Factor)	# Displace coordinates along mode 'imode' by 'Factor'
+         fname='tstep' + str(tstep) + 'mode' + str(imode) + 'g' + str(j)  + '.xyz'	# Output file name
+         write_xyz(AtomList,D,fname)		# write to xyz
+   ####################################################
+   return
+
+
+
