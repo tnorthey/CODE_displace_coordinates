@@ -210,6 +210,9 @@ generate_spectrum(XAS)
 
 ## Files
 
+## Dependencies 
+
+Python 2.7.6 
 
 
 
