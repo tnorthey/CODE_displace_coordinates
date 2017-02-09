@@ -73,7 +73,7 @@ for j in range(20):
    string = str(v[0][j]) + ' ' + str(v[1][j]) + ' ' + str(v[2][j]) + ' ' + str(v[3][j])
    print string.split()
 ```
-gives the first 20 displacements for state 1 and each mode, in this case corresponding to exactly two time-steps,
+gives the first 20 displacements for state 1 and the four modes (columns), in this case corresponding to exactly two time-steps,
 
 ```
 ['0.0', '0.0', '0.0', '0.0']
