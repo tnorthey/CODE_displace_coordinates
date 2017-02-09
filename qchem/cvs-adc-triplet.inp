@@ -1,5 +1,9 @@
+$comment
+job3 - cvs-adc(2)-x calculation with mom to prevent collapse to ground state
+$end
+
 $molecule
-0 1
+0 3
  C    -0.696126    -1.136419     0.000000
  C     0.696126    -1.136419     0.000000
  N    -1.417532     0.000000     0.000000
@@ -13,18 +17,14 @@ $molecule
 $end
 
 $rem
-exchange b3lyp
-basis 6-311+G*
-cis_n_roots 30
-cis_triplets false
-trnss true                      !reduced single excitation space used
-trtype 3                        !to be defined in solute keyword, so oribtal 1 (1s N)
-n_sol 1
-unrestricted true
-mom_start 1
-$end
-
-$solute
-1
+mem_total 3000
+mem_static 1500
+sym_ignore true
+method cvs-adc(2)-x
+basis 6-31G*
+ee_singlets 20
+cc_rest_occ 1                  !only excitations from the 1st orbital (N 1s)
+unrestricted  true
+max_scf_cycles 200
 $end
 

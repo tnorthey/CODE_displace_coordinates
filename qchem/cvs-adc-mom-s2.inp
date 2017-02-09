@@ -19,8 +19,9 @@ $end
 
 $rem
 jobtype      sp
+sym_ignore true
 exchange     hf
-basis        6-311+G*
+basis        6-31G*
 unrestricted true
 $end
 
@@ -37,14 +38,15 @@ $end
 $rem
    JOBTYPE           SP
    EXCHANGE          HF
-   BASIS             6-311+G*
+   BASIS             6-31G*
    SCF_GUESS         READ
    MOM_START         1
    UNRESTRICTED      TRUE
+   sym_ignore true
 $end
 
 $swap_occupied_virtual
-   beta   21  22	!beta electron in RHF HOMO moved to RHF LUMO 
+   beta   20  23	!beta electron in RHF HOMO-1 moved to RHF LUMO+1 
 $end
 
 @@@
@@ -60,14 +62,16 @@ $end
 $rem
 mem_total 3000
 mem_static 1500
+sym_ignore true
+mom_start 1
+scf_guess read
 method cvs-adc(2)-x
-basis 6-311+G*
-ee_states 6
+ADC_DAVIDSON_MAXSUBSPACE 300   !subspace is n times number of excited states to be calculated, default=5
+ADC_DAVIDSON_CONV 6	       !converge to 10^-n, default n=6
+ADC_DAVIDSON_MAXITER 60        !Controls the maximum number of iterations of the Davidson procedure. Default = 60
+basis 6-31G*
+ee_singlets 20 
 cc_rest_occ 1                  !only excitations from the 1st orbital (N 1s)
 unrestricted  true
 max_scf_cycles 200
-mom_start 1
-scf_guess read
-symmetry off
 $end
-

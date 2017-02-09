@@ -1,5 +1,6 @@
 $comment
-XAS calculation for the 2b valence excited for water using TDDFT SRC1 + 6-311+G* basis set
+XAS calculation for the 2b valence excited for water using cvs-adc(2)-x + 6-311+G* basis set
+job 1 - determination of HF orbitals
 $end
 
 $molecule
@@ -17,13 +18,17 @@ $molecule
 $end
 
 $rem
-   JOBTYPE           sp
-   METHOD            B3LYP
-   BASIS             6-311+G*
-   UNRESTRICTED TRUE
+jobtype      sp
+exchange     hf
+basis        6-31G*
+unrestricted true
 $end
 
 @@@
+
+$comment
+job2 - MOM calculation for 2b excited state wavefuntion
+$end
 
 $molecule
 read
@@ -31,37 +36,38 @@ $end
 
 $rem
    JOBTYPE           SP
-   METHOD            B3LYP
-   BASIS             6-311+G*
+   EXCHANGE          HF
+   BASIS             6-31G*
    SCF_GUESS         READ
    MOM_START         1
    UNRESTRICTED      TRUE
 $end
 
 $swap_occupied_virtual
-   beta   21  22        !beta electron in RHF HOMO moved to RHF LUMO
+   beta   20  22	!beta electron in RHF HOMO-1 moved to RHF LUMO 
 $end
 
 @@@
+
+$comment
+job3 - cvs-adc(2)-x calculation with mom to prevent collapse to ground state
+$end
 
 $molecule
 read
 $end
 
 $rem
-exchange b3lyp
-basis 6-311+G*
-cis_n_roots 30
-cis_triplets false
-trnss true                      !reduced single excitation space used
-trtype 3                        !to be defined in solute keyword, so oribtal 1 (1s O)
-n_sol 1
-unrestricted true
+mem_total 3000
+mem_static 1500
+method cvs-adc(2)-x
+basis 6-31G*
+ee_singlets 6
+cc_rest_occ 1                  !only excitations from the 1st orbital (N 1s)
+unrestricted  true
+max_scf_cycles 200
 mom_start 1
 scf_guess read
-$end
-
-$solute
-1
+symmetry off
 $end
 

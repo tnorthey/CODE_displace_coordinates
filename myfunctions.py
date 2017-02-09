@@ -250,7 +250,7 @@ def generate_spectrum(XAS):
    Emax=int(E[-1]+1.5)		# Max energy
    A=XAS[1]			# Line intensities
    x=[]
-   res=200			# Number of spaces along x-axis (arbitrary)
+   res=300			# Number of spaces along x-axis (arbitrary)
    x=linspace(Emin,Emax,res)
    
    spect=[]

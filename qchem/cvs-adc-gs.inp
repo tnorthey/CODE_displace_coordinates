@@ -1,0 +1,30 @@
+$comment
+job3 - cvs-adc(2)-x calculation with mom to prevent collapse to ground state
+$end
+
+$molecule
+0 1
+ C    -0.696126    -1.136419     0.000000
+ C     0.696126    -1.136419     0.000000
+ N    -1.417532     0.000000     0.000000
+ N     1.417532     0.000000     0.000000
+ C     0.696126     1.136419     0.000000
+ C    -0.696126     1.136419     0.000000
+ H     1.250625     2.067160     0.000000
+ H    -1.250625     2.067160     0.000000
+ H     1.250625    -2.067160     0.000000
+ H    -1.250625    -2.067160     0.000000
+$end
+
+$rem
+mem_total 3000
+mem_static 1500
+sym_ignore true
+method cvs-adc(2)-x
+basis 6-31G*
+ee_singlets 20 
+cc_rest_occ 1                  !only excitations from the 1st orbital (N 1s)
+unrestricted  true
+max_scf_cycles 200
+$end
+

@@ -7,7 +7,7 @@ istate=1                                # Electronic state of interest
 Nstate=2				# Total number of states
 xyzfile='inputs/equilibrium.xyz'	# xyz file
 AtomList,R0 = read_xyz(xyzfile)         # Read atom list and equilibrium geometry from xyz file
-Time,v = read_gwpcentres(Nstate,istate) # Read list of time-steps (atomic units) and displacement factors
+Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) # Read list of time-steps (atomic units) and displacement factors
 D=R0                    		# Starting geometry
 j=1                     		# Arbitrarily selected example value; v[i][j] signifies the displacement factor of mode i and row index j, which repeats every Ng (total number of Gaussians) rows for Gaussian k with t=t+1 (+1 time-step)
 

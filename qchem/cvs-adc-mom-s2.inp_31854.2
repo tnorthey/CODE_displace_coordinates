@@ -1,0 +1,25 @@
+
+$comment
+job3 - cvs-adc(2)-x calculation with mom to prevent collapse to ground state
+$end
+
+$molecule
+read
+$end
+
+$rem
+mem_total 3000
+mem_static 1500
+sym_ignore true
+mom_start 1
+scf_guess read
+method cvs-adc(2)-x
+ADC_DAVIDSON_MAXSUBSPACE 5     !subspace is n times number of excited states to be calculated, default=5
+ADC_DAVIDSON_CONV 3	       !converge to 10^-n, default n=6
+ADC_DAVIDSON_MAXITER 120       !Controls the maximum number of iterations of the Davidson procedure. Default = 60
+basis 6-31G*
+ee_singlets 20
+cc_rest_occ 1                  !only excitations from the 1st orbital (N 1s)
+unrestricted  true
+max_scf_cycles 200
+$end
