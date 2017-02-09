@@ -135,45 +135,34 @@ def read_output(Nstate,Ng):
    # Inputs: 	Nstate (int), total number of states
    # 	 	Ng (int), total number of Gaussians
    # Outputs:	Time (float list), list of time in fs 
-   # 		Pop (float array), state populations with columns 0,1,...,Nstate-1 pertaining to states 1,2,...,Nstate
    # 		gWeights (float array), Gaussian populations with columns 0,1,...,Ng-1 pertaining to Gaussians 1,2,...,Ng
    ##################################################
-   Time=[]; Pop=[]; gWeights=[]
-   c=0; X=0; j=0
-   for i in range(Nstate):
-      Pop.append([])
+   Time=[]; gWeights=[]
+   X=0; c=0; j=0
    for i in range(Ng):
       gWeights.append([])
-   with open('output','r') as f:
+   with open('inputs/output','r') as f:
       for line in f:
          if line[1:5]=='Time':
-	    print line
             Time.append(float(line.split()[2]))
-         elif line[1:6]=='state':
-	    print line
-            istate=int(line.split()[2])				# state number = 1,2,...
-            Pop[istate-1].append(float(line.split()[4]))	# state populations
 	 elif line[1:len('Gross Gaussian Populations')+1]=='Gross Gaussian Populations':
-            print line
             istate = int(line.split()[7])			# state number = 1,2,...
             X=(Ng-1)/7+1					# Causes the next X lines to be read in the following elif block
 	 elif X>0:
 	    c+=1						# Line counter for Gaussian populations part
-	    print line
 	    for i in range(7):
 	       j+=1
-	       print line.split()[3+i]
 	       gWeights[i+7*(c-1)].append(float(line.split()[3+i]))
 	       if j==Ng:					# break after Ng floats have been appended to gWeights
 	          break
             if c==X:
                X=0; c=0; j=0					# reset counters
-	       print "X reset to 0"	
-	 else:	
-	    print "Line not read."
+	       # print "X reset to 0"	
+	 #else:	
+	 #   print "Line not read."
    # Checks
    ##################################################
-   return Time,Pop,gWeights
+   return Time,gWeights
 
 
 def read_adc(ADCoutput):

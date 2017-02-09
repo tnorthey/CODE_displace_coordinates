@@ -60,6 +60,47 @@ The beginning of the file gives two numbers (4 and 10) which are the number of m
 
 ```
 
+Using the 'read_gwpcentres' function,
+
+```python
+
+istate=1                                # Electronic state of interest
+Nstate=2                                # Total number of states
+Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) # Read list of time-steps (atomic units) and displacement factors
+
+for j in range(20):
+   string = str(v[0][j]) + ' ' + str(v[1][j]) + ' ' + str(v[2][j]) + ' ' + str(v[3][j])
+   print string.split()
+```
+gives the first 20 displacements for each mode, in this case corresponding to exactly two time-steps,
+
+```
+['0.0', '0.0', '0.0', '0.0']
+['0.9352661232', '0.0', '0.0', '0.0']
+['0.0', '0.9352661232', '0.0', '0.0']
+['0.0', '0.0', '0.9352661232', '0.0']
+['0.0', '0.0', '0.0', '0.9352661232']
+['-0.9352661232', '0.0', '0.0', '0.0']
+['0.0', '-0.9352661232', '0.0', '0.0']
+['0.0', '0.0', '-0.9352661232', '0.0']
+['0.0', '0.0', '0.0', '-0.9352661232']
+['0.9352661232', '0.9352661232', '0.0', '0.0']
+['-0.006883521395', '0.00822412704', '-0.0287090038', '0.0']
+['0.9109454151', '0.00822412704', '-0.0287090038', '0.0']
+['-0.006883521395', '0.9375857968', '-0.0287090038', '0.0']
+['-0.006883521395', '0.00822412704', '0.8801445246', '0.0']
+['-0.04705419099', '-0.0395813075', '0.002568199602', '0.2386044828']
+['-0.9247124579', '0.00822412704', '-0.0287090038', '0.0']
+['-0.006883521395', '-0.9211375427', '-0.0287090038', '0.0']
+['-0.006883521395', '0.00822412704', '-0.9375625322', '0.0']
+['-0.04705419099', '-0.0395813075', '0.002568199602', '-0.2386044828']
+['0.9109454151', '0.9375857968', '-0.0287090038', '0.0']
+
+```
+
+
+
+
 #### Extract from output file
 The important lines for this are the Time (fs) and the Gross Gaussin Populations for each state. The spectrum for a specific time-step is a weighted sum of spectra for each Gaussian. The Gaussian displacements are in the gwpcentres file (above) and the weightings are in this file. 
 
