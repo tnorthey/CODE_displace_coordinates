@@ -6,7 +6,8 @@ Calculate X-ray absorption spectra from a quantum dynamics trajectory.
 
 ## Example Usage
 
-Extract from gwpcentres file:
+#### Extract from gwpcentres file for pyrazine (4-mode 2-state model)
+The beginning of the file gives two numbers (4 and 10) which are the number of modes and number of Gaussians respectively. As you can see there are four columns (modes) and ten rows (Gaussians per mode). Each section starts with the time (atomic units), then state (1,2 in this case), and then the displacements (atomic units) along each normal mode.
 
 ```
  #            4          10
@@ -59,7 +60,8 @@ Extract from gwpcentres file:
 
 ```
 
-Extract from output file:
+#### Extract from output file
+The important lines for this are the Time (fs) and the Gross Gaussin Populations for each state. The spectrum for a specific time-step is a weighted sum of spectra for each Gaussian. The Gaussian displacements are in the gwpcentres file (above) and the weightings are in this file. 
 
 ```
  Time  =       0.00 fs,       CPU =       0.05 s,    Norm    = 1.00000000
@@ -68,34 +70,19 @@ Extract from output file:
  state = 1  pop.: 0.00000000   E-corr:  -0.000000 ev,   E-tot =  -0.000000 ev
  state = 2  pop.: 1.00000000   E-corr:   0.000000 ev,   E-tot =   0.687531 ev
 
- Diagonal Densities *1000,  state = 1
-v1        C  4:   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
-     8 - 10>    0.0000   0.0000   0.0000
+...
 
  Gross Gaussian Populations *10 (weighted),  state = 1
 v1      ReC 4:   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
      8 - 10>    0.0000   0.0000   0.0000
 
- Mode expectation values and variances,  state = 1
-v1          : <q>=   0.0000  <dq>=   0.0000  <p>=   0.0000  <dp>=   0.0000
-v6a         : <q>=   0.0000  <dq>=   0.0000  <p>=   0.0000  <dp>=   0.0000
-v9a         : <q>=   0.0000  <dq>=   0.0000  <p>=   0.0000  <dp>=   0.0000
-v10a        : <q>=   0.0000  <dq>=   0.0000  <p>=   0.0000  <dp>=   0.0000
-
- Diagonal Densities *1000,  state = 2
-v1        C  4:1000.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
-     8 - 10>    0.0000   0.0000   0.0000
+...
 
  Gross Gaussian Populations *10 (weighted),  state = 2
 v1      ReC 4:  10.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
      8 - 10>    0.0000   0.0000   0.0000
 
- Mode expectation values and variances,  state = 2
-v1          : <q>=   0.0000  <dq>=   0.7000  <p>=   0.0000  <dp>=   0.7143
-v6a         : <q>=   0.0000  <dq>=   0.7000  <p>=   0.0000  <dp>=   0.7143
-v9a         : <q>=   0.0000  <dq>=   0.7000  <p>=   0.0000  <dp>=   0.7143
-v10a        : <q>=   0.0000  <dq>=   0.7000  <p>=   0.0000  <dp>=   0.7143
-------------------------------------------------------------------------------
+...
 
  Time  =       1.00 fs,       CPU =       0.18 s,    Norm    = 1.00000000
  E-tot =   0.687536 ev,    E-corr =   0.025228 ev,   Delta-E =     0.0047 mev
@@ -103,33 +90,20 @@ v10a        : <q>=   0.0000  <dq>=   0.7000  <p>=   0.0000  <dp>=   0.7143
  state = 1  pop.: 0.03120778   E-corr:   0.012614 ev,   E-tot =   0.008375 ev
  state = 2  pop.: 0.96879222   E-corr:   0.012614 ev,   E-tot =   0.679160 ev
 
- Diagonal Densities *1000,  state = 1
-v1        C  4:   0.0000   0.0000   0.0000   0.0000 212.7451   0.0000   0.0000
-     8 - 10>    0.0000 212.7451   0.0000
-
+...
+ 
  Gross Gaussian Populations *10 (weighted),  state = 1
 v1      ReC 4:   0.0000   0.0000   0.0000   0.0000   0.1560   0.0000   0.0000
      8 - 10>    0.0000   0.1560   0.0000
 
- Mode expectation values and variances,  state = 1
-v1          : <q>=  -0.0471  <dq>=   0.7000  <p>=  -0.1824  <dp>=   0.7143
-v6a         : <q>=  -0.0396  <dq>=   0.7000  <p>=  -0.0122  <dp>=   0.7143
-v9a         : <q>=   0.0026  <dq>=   0.7000  <p>=  -0.1605  <dp>=   0.7143
-v10a        : <q>=  -0.0000  <dq>=   1.2207  <p>=  -0.0000  <dp>=   1.2291
-
- Diagonal Densities *1000,  state = 2
-v1        C  4:1310.1461   0.0316   0.0090   0.0413   9.0726   0.0246   0.0055
-     8 - 10>    0.0399   9.0726   0.0010
+...
 
  Gross Gaussian Populations *10 (weighted),  state = 2
 v1      ReC 4:   9.4220   0.0011   0.0003   0.0014   0.1304   0.0009   0.0002
      8 - 10>    0.0014   0.1304  -0.0000
 
- Mode expectation values and variances,  state = 2
-v1          : <q>=  -0.0288  <dq>=   0.7006  <p>=  -0.3050  <dp>=   0.7137
-v6a         : <q>=  -0.0091  <dq>=   0.7002  <p>=  -0.1827  <dp>=   0.7140
-v9a         : <q>=  -0.0092  <dq>=   0.7008  <p>=  -0.0720  <dp>=   0.7135
-v10a        : <q>=   0.0000  <dq>=   0.6765  <p>=  -0.0000  <dp>=   0.7393
+...
+
 ```
 
 Example code:
