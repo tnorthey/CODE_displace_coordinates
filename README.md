@@ -2,11 +2,11 @@
 
 ## Description
 
-Calculate X-ray absorption spectra from a quantum dynamics trajectory.  
+Calculate X-ray absorption spectra from a quantum dynamics trajectory for pyrazine (4-mode 2-state model).  
 
 ## Example Usage
 
-#### Extract from gwpcentres file for pyrazine (4-mode 2-state model)
+#### Extract from 'gwpcentres' file 
 The beginning of the file gives two numbers (4 and 10) which are the number of modes and number of Gaussians respectively. As you can see there are four columns (modes) and ten rows (Gaussians per mode). Each section starts with the time (atomic units), then state (1,2 in this case), and then the displacements (atomic units) along each normal mode.
 
 ```
@@ -99,10 +99,7 @@ gives the first 20 displacements for state 1 and the four modes (columns), in th
 
 ```
 
-
-
-
-#### Extract from output file
+#### Extract from 'output' file
 The important lines for this are the Time (fs) and the Gross Gaussin Populations for each state. The spectrum for a specific time-step is a weighted sum of spectra for each Gaussian. The Gaussian displacements are in the gwpcentres file (above) and the weightings are in this file. 
 
 ```
