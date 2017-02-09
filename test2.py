@@ -8,7 +8,7 @@ Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) # Read list of time-steps (atom
 
 Time,gWeights = read_output(Nstate,Ng)	 # Read time-steps (fs), and Gaussian weights
 
-for j in range(20):
+for j in range(4):
    string = str(gWeights[0][j]) + ' ' + str(gWeights[1][j]) + ' ' + str(gWeights[2][j])
    print string.split()
 

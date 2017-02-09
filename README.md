@@ -152,7 +152,7 @@ istate=1                                # Electronic state of interest
 Nstate=2                                # Total number of states
 Time,gWeights = read_output(Nstate,Ng)   # Read time-steps (fs), and Gaussian weights
 
-for j in range(20):
+for j in range(4):
    string = str(gWeights[0][j]) + ' ' + str(gWeights[1][j]) + ' ' + str(gWeights[2][j])
    print string.split()
 
@@ -165,22 +165,6 @@ gives only the first three columns (Gaussians), and each row is in the order "st
 ['10.0', '0.0', '0.0']
 ['0.0', '0.0', '0.0']
 ['9.422', '0.0011', '0.0003']
-['0.0', '0.0', '0.0']
-['-5.4094', '0.0017', '0.0']
-['0.0', '0.0', '0.0']
-['1.7819', '0.0111', '0.0']
-['0.0', '0.0', '0.0']
-['9.1254', '0.0329', '0.0']
-['0.0', '0.0', '0.0']
-['8.9607', '0.1167', '0.0007']
-['0.0', '0.0', '0.0']
-['6.2602', '-0.2155', '0.0016']
-['-0.0', '0.0', '0.0']
-['3.3197', '-0.78', '0.0678']
-['-0.0', '0.0', '0.0']
-['2.7425', '7.9876', '0.0921']
-['-0.0', '0.0', '0.0']
-['2.7245', '7.3698', '0.123']
 ```
 
 ## Functions
