@@ -66,13 +66,14 @@ Using the 'read_gwpcentres' function,
 
 istate=1                                # Electronic state of interest
 Nstate=2                                # Total number of states
-Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) # Read list of time-steps (atomic units) and displacement factors
+# Read list of time-steps (atomic units) and displacement factors
+Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) 
 
 for j in range(20):
    string = str(v[0][j]) + ' ' + str(v[1][j]) + ' ' + str(v[2][j]) + ' ' + str(v[3][j])
    print string.split()
 ```
-gives the first 20 displacements for each mode, in this case corresponding to exactly two time-steps,
+gives the first 20 displacements for state 1 and each mode, in this case corresponding to exactly two time-steps,
 
 ```
 ['0.0', '0.0', '0.0', '0.0']
@@ -146,6 +147,45 @@ v1      ReC 4:   9.4220   0.0011   0.0003   0.0014   0.1304   0.0009   0.0002
 ...
 
 ```
+
+Using the 'read_output' function,
+
+```python
+istate=1                                # Electronic state of interest
+Nstate=2                                # Total number of states
+Time,gWeights = read_output(Nstate,Ng)   # Read time-steps (fs), and Gaussian weights
+
+for j in range(20):
+   string = str(gWeights[0][j]) + ' ' + str(gWeights[1][j]) + ' ' + str(gWeights[2][j])
+   print string.split()
+
+```
+
+gives only the first three columns (Gaussians), and each row is in the order "state 1, state 2" for time-step 1, then "state 1, state 2" for time-step 2, and so on, 
+
+```
+['0.0', '0.0', '0.0']
+['10.0', '0.0', '0.0']
+['0.0', '0.0', '0.0']
+['9.422', '0.0011', '0.0003']
+['0.0', '0.0', '0.0']
+['-5.4094', '0.0017', '0.0']
+['0.0', '0.0', '0.0']
+['1.7819', '0.0111', '0.0']
+['0.0', '0.0', '0.0']
+['9.1254', '0.0329', '0.0']
+['0.0', '0.0', '0.0']
+['8.9607', '0.1167', '0.0007']
+['0.0', '0.0', '0.0']
+['6.2602', '-0.2155', '0.0016']
+['-0.0', '0.0', '0.0']
+['3.3197', '-0.78', '0.0678']
+['-0.0', '0.0', '0.0']
+['2.7425', '7.9876', '0.0921']
+['-0.0', '0.0', '0.0']
+['2.7245', '7.3698', '0.123']
+```
+
 
 Example code:
 
