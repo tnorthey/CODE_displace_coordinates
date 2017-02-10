@@ -349,9 +349,3 @@ generate_spectrum(XAS)
 
 Python 2.7.6 
 
-
-```math
-a+b=c
-\pi
-\sum_i
-```
