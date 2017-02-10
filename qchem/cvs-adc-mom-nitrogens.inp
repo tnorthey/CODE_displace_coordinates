@@ -1,0 +1,74 @@
+$comment
+XAS calculation for the 2b valence excited for water using cvs-adc(2)-x + 6-311+G* basis set
+job 1 - determination of HF orbitals
+$end
+
+$molecule
+0 1
+ C    -0.696126    -1.136419     0.000000
+ C     0.696126    -1.136419     0.000000
+ N    -1.417532     0.000000     0.000000
+ N     1.417532     0.000000     0.000000
+ C     0.696126     1.136419     0.000000
+ C    -0.696126     1.136419     0.000000
+ H     1.250625     2.067160     0.000000
+ H    -1.250625     2.067160     0.000000
+ H     1.250625    -2.067160     0.000000
+ H    -1.250625    -2.067160     0.000000
+$end
+
+$rem
+jobtype      sp
+sym_ignore true
+exchange     hf
+basis        6-31G*
+unrestricted true
+$end
+
+@@@
+
+$comment
+job2 - MOM calculation for 2b excited state wavefuntion
+$end
+
+$molecule
+read
+$end
+
+$rem
+   JOBTYPE           SP
+   EXCHANGE          HF
+   BASIS             6-31G*
+   SCF_GUESS         READ
+   MOM_START         1
+   UNRESTRICTED      TRUE
+   sym_ignore true
+$end
+
+$swap_occupied_virtual
+   beta   20  22	!beta electron in RHF HOMO-1 moved to RHF LUMO 
+$end
+
+@@@
+
+$comment
+job3 - cvs-adc(2)-x calculation with mom to prevent collapse to ground state
+$end
+
+$molecule
+read
+$end
+
+$rem
+mem_total 6000
+mem_static 3000
+sym_ignore true
+mom_start 1
+scf_guess read
+method cvs-adc(2)-x
+basis 6-31G*
+ee_singlets 20
+cc_rest_occ 2                  ! excitations from the 1st 2 orbitals (they are Nitrogens)
+unrestricted  true
+max_scf_cycles 200
+$end
