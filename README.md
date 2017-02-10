@@ -100,7 +100,7 @@ gives the first 20 displacements for state 1 and the four modes (columns), in th
 ```
 
 #### Extract from 'output' file
-The important lines for this are the Time (fs) and the Gross Gaussin Populations for each state. The spectrum for a specific time-step is a weighted sum of spectra for each Gaussian. The Gaussian displacements are in the gwpcentres file (above) and the weightings are in this file. 
+The important lines for this are the Time (fs) and the Gross Gaussian Populations for each state. The spectrum for a specific time-step is the weighted sum of spectra for each Gaussian. The Gaussian displacements are in the gwpcentres file (above) and the weightings are in this file. 
 
 ```
  Time  =       0.00 fs,       CPU =       0.05 s,    Norm    = 1.00000000
@@ -148,8 +148,8 @@ v1      ReC 4:   9.4220   0.0011   0.0003   0.0014   0.1304   0.0009   0.0002
 Using the 'read_output' function,
 
 ```python
-istate=1                                # Electronic state of interest
 Nstate=2                                # Total number of states
+Ng=10					# Total number of Gaussians
 Time,gWeights = read_output(Nstate,Ng)   # Read time-steps (fs), and Gaussian weights
 
 for j in range(4):
@@ -350,4 +350,8 @@ generate_spectrum(XAS)
 Python 2.7.6 
 
 
-
+```math
+a+b=c
+\pi
+\sum_i
+```
