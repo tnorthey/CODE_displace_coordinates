@@ -105,7 +105,7 @@ Using the 'read_output' function,
 
 ```python
 Nstate=2                                # Total number of states
-Ng=10					# Total number of Gaussians
+Ng=3					# Total number of Gaussians
 Time,gWeights = read_output(Nstate,Ng)   # Read time-steps (fs), and Gaussian weights
 
 for j in range(4):
@@ -133,7 +133,7 @@ Reads xyz file 'fname'
 
 #####Usage
 ```python
-read_xyz(fname)
+AtomList,Coords = read_xyz(fname)
 ```
 
 #####Inputs    
@@ -172,7 +172,7 @@ Reads displacement coordinates for mode 'imode' from 'normalmodes.txt'
 
 #####Usage
 ```python
-read_displacements(Nat,imode)
+Displc = read_displacements(Nat,imode)
 ```
 
 #####Inputs    
@@ -181,7 +181,7 @@ read_displacements(Nat,imode)
 - imode (int), the displacements are taken from mode number 'imode'
 
 #####Outputs   
-- D (float list), single column of displacement coordinates (length 3 x Nat)
+- Displc (float list), single column of displacement coordinates (length 3 x Nat)
 
 ### read_gwpcentres 
 
@@ -190,7 +190,7 @@ Read displacement factors from file 'gwpcentres' for state 'istate'.
 
 #####Usage
 ```python
-read_gwpcentres(Nstate,istate)
+Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate)
 ```
 
 #####Inputs    
@@ -199,10 +199,14 @@ read_gwpcentres(Nstate,istate)
 - istate (int), the state to read
 
 #####Outputs   
+- Nmode (int), number of modes
+
+- Ng (int), number of Gaussians
+
 - Time (float list), list of time in atomic units 
 
 - v (float array), displacement factors array with columns 0,1,...,Nmode-1 pertaining to modes 1,2,...,Nmode, rows correspond to Ng Gaussians
-
+ 
 ### read_output 
 
 #####Description
@@ -210,7 +214,7 @@ Read Gaussian weights (and state weights) from file 'output' for state 'istate'.
 
 #####Usage
 ```python
-read_output(Nstate,Ng)
+Time,gWeights = read_output(Nstate,Ng)
 ```
 
 #####Inputs    
@@ -220,8 +224,6 @@ read_output(Nstate,Ng)
 
 #####Outputs   
 - Time (float list), list of time in fs 
-
-- Pop (float array), state populations with columns 0,1,...,Nstate-1 pertaining to states 1,2,...,Nstate
 
 - gWeights (float array), Gaussian populations with columns 0,1,...,Ng-1 pertaining to Gaussians 1,2,...,Ng
 
@@ -233,7 +235,7 @@ Reads excitation energies and oscillator strengths from qchem XAS ADC calculatio
 
 #####Usage
 ```python
-read_adc(ADCoutput)
+XAS = read_adc(ADCoutput)
 ```
 
 #####Inputs    
@@ -250,7 +252,7 @@ Reads excitation energies and oscillator strengths from qchem XAS SRC calculatio
 
 #####Usage
 ```python
-read_adc(SRCoutput)
+XAS = read_adc(SRCoutput)
 ```
 
 #####Inputs    
@@ -260,6 +262,25 @@ read_adc(SRCoutput)
 - XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
 
 
+### generate_spectrum 
+
+#####Description
+Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV)
+
+#####Usage
+```python
+x,spect = generate_spectrum(XAS)
+```
+
+#####Inputs    
+- XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
+
+#####Outputs   
+- x (float list), x-axis energies (eV)
+
+- spect (float list), spectrum (arb. units) with Lorentzian broadened lines with FWHM=0.5 eV 
+
+
 ### displace_coords 
 
 #####Description
@@ -267,7 +288,7 @@ Displace coords from xyz file 'xyzfile' along mode 'imode' `(0<int<=Nmode)` by '
 
 #####Usage
 ```python
-displace_coords(Coords,imode,Factor)
+D = displace_coords(Coords,imode,Factor)
 ```
 
 #####Inputs    
@@ -281,28 +302,9 @@ displace_coords(Coords,imode,Factor)
 - D (float list), displaced coordinates with same formatting as 'Coords'
 
 
-### generate_spectrum 
-
-#####Description
-Generates spectrum with Lorentzian broadened lines (with FWHM=0.5 eV)
-
-#####Usage
-```python
-generate_spectrum(XAS)
-```
-
-#####Inputs    
-- XAS (float array), XAS[0] = energies, XAS[1] = oscillator strengths
-
-#####Outputs   
-- x (float list), x-axis energies (eV)
-
-- spect (float list), spectrum (arb. units) with Lorentzian broadened lines with FWHM=0.5 eV 
-
-
 ## Files
 
 ## Dependencies 
 
-Python 2.7.6 
+Python 2.7 
 
