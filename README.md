@@ -7,56 +7,28 @@ Calculate X-ray absorption spectra from a quantum dynamics trajectory for pyrazi
 ## Example Usage
 
 #### Extract from 'gwpcentres' file 
-The beginning of the file gives two numbers (4 and 10) which are the number of modes and number of Gaussians respectively. As you can see there are four columns (modes) and ten rows (Gaussians per mode). Each section starts with the time (atomic units), then state (1,2 in this case), and then the displacements (atomic units) along each normal mode.
+The beginning of the file gives two numbers (4 and 3) which are the number of modes and number of Gaussians respectively. As you can see there are four columns (modes) and three rows (Gaussians per mode). Each section starts with the time (atomic units), then state (1,2 in this case), and then the displacements (atomic units) along each normal mode. Note: Using only three Gaussians is not recommended but used here for an easier explanation. 
 
 ```
- #            4          10
+  #            4           3
  time:   0.0000000000000000
  state:           1
    0.000000000       0.000000000       0.000000000       0.000000000
   0.9352661232       0.000000000       0.000000000       0.000000000
    0.000000000      0.9352661232       0.000000000       0.000000000
-   0.000000000       0.000000000      0.9352661232       0.000000000
-   0.000000000       0.000000000       0.000000000      0.9352661232
- -0.9352661232       0.000000000       0.000000000       0.000000000
-   0.000000000     -0.9352661232       0.000000000       0.000000000
-   0.000000000       0.000000000     -0.9352661232       0.000000000
-   0.000000000       0.000000000       0.000000000     -0.9352661232
-  0.9352661232      0.9352661232       0.000000000       0.000000000
  state:           2
    0.000000000       0.000000000       0.000000000       0.000000000
   0.9352661232       0.000000000       0.000000000       0.000000000
    0.000000000      0.9352661232       0.000000000       0.000000000
-   0.000000000       0.000000000      0.9352661232       0.000000000
-   0.000000000       0.000000000       0.000000000      0.9352661232
- -0.9352661232       0.000000000       0.000000000       0.000000000
-   0.000000000     -0.9352661232       0.000000000       0.000000000
-   0.000000000       0.000000000     -0.9352661232       0.000000000
-   0.000000000       0.000000000       0.000000000     -0.9352661232
-  0.9352661232      0.9352661232       0.000000000       0.000000000
  time:   41.341373336559997
  state:           1
- -0.6883521395E-02  0.8224127040E-02 -0.2870900380E-01   0.000000000
-  0.9109454151      0.8224127040E-02 -0.2870900380E-01   0.000000000
- -0.6883521395E-02  0.9375857968     -0.2870900380E-01   0.000000000
- -0.6883521395E-02  0.8224127040E-02  0.8801445246       0.000000000
- -0.4705419099E-01 -0.3958130750E-01  0.2568199602E-02  0.2386044828
- -0.9247124579      0.8224127040E-02 -0.2870900380E-01   0.000000000
- -0.6883521395E-02 -0.9211375427     -0.2870900380E-01   0.000000000
- -0.6883521395E-02  0.8224127040E-02 -0.9375625322       0.000000000
- -0.4705419099E-01 -0.3958130750E-01  0.2568199602E-02 -0.2386044828
-  0.9109454151      0.9375857968     -0.2870900380E-01   0.000000000
+ -0.6883521397E-02  0.8224127040E-02 -0.2870900383E-01   0.000000000
+  0.9109454151      0.8224127040E-02 -0.2870900383E-01   0.000000000
+ -0.6883521397E-02  0.9375857968     -0.2870900383E-01   0.000000000
  state:           2
- -0.3541889254E-01 -0.1917443803E-01 -0.4932732269E-02 -0.1062194758E-11
-  0.8883616066     -0.1018631503E-01 -0.8717163010E-02   0.000000000
- -0.2946732988E-01  0.9191753547     -0.8717163010E-02   0.000000000
- -0.2946732988E-01 -0.1018631503E-01  0.9001363654       0.000000000
- -0.4749912624E-01 -0.3986490517E-01  0.2098486366E-02  0.6305138940
- -0.9472962664     -0.1018631503E-01 -0.8717163010E-02   0.000000000
- -0.2946732988E-01 -0.9395479848     -0.8717163010E-02   0.000000000
- -0.2946732988E-01 -0.1018631503E-01 -0.9175706914       0.000000000
- -0.4749912624E-01 -0.3986490518E-01  0.2098486370E-02 -0.6305138940
-  0.8883616066      0.9191753547     -0.8717163010E-02   0.000000000
+ -0.2946498382E-01 -0.1017365944E-01 -0.8717163015E-02   0.000000000
+  0.8883616066     -0.1008518108E-01 -0.8717163018E-02   0.000000000
+ -0.2946732990E-01  0.9191753547     -0.8717163018E-02   0.000000000
 
 ```
 
@@ -69,33 +41,19 @@ Nstate=2                                # Total number of states
 # Read list of time-steps (atomic units) and displacement factors
 Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) 
 
-for j in range(20):
+for j in range(6):
    string = str(v[0][j]) + ' ' + str(v[1][j]) + ' ' + str(v[2][j]) + ' ' + str(v[3][j])
    print string.split()
 ```
-gives the first 20 displacements for state 1 and the four modes (columns), in this case corresponding to exactly two time-steps,
+gives the first 6 displacements for state 1 and the four modes (columns), in this case corresponding to exactly two time-steps,
 
 ```
 ['0.0', '0.0', '0.0', '0.0']
 ['0.9352661232', '0.0', '0.0', '0.0']
 ['0.0', '0.9352661232', '0.0', '0.0']
-['0.0', '0.0', '0.9352661232', '0.0']
-['0.0', '0.0', '0.0', '0.9352661232']
-['-0.9352661232', '0.0', '0.0', '0.0']
-['0.0', '-0.9352661232', '0.0', '0.0']
-['0.0', '0.0', '-0.9352661232', '0.0']
-['0.0', '0.0', '0.0', '-0.9352661232']
-['0.9352661232', '0.9352661232', '0.0', '0.0']
-['-0.006883521395', '0.00822412704', '-0.0287090038', '0.0']
-['0.9109454151', '0.00822412704', '-0.0287090038', '0.0']
-['-0.006883521395', '0.9375857968', '-0.0287090038', '0.0']
-['-0.006883521395', '0.00822412704', '0.8801445246', '0.0']
-['-0.04705419099', '-0.0395813075', '0.002568199602', '0.2386044828']
-['-0.9247124579', '0.00822412704', '-0.0287090038', '0.0']
-['-0.006883521395', '-0.9211375427', '-0.0287090038', '0.0']
-['-0.006883521395', '0.00822412704', '-0.9375625322', '0.0']
-['-0.04705419099', '-0.0395813075', '0.002568199602', '-0.2386044828']
-['0.9109454151', '0.9375857968', '-0.0287090038', '0.0']
+['-0.006883521397', '0.00822412704', '-0.02870900383', '0.0']
+['0.9109454151', '0.00822412704', '-0.02870900383', '0.0']
+['-0.006883521397', '0.9375857968', '-0.02870900383', '0.0']
 
 ```
 
@@ -103,7 +61,7 @@ gives the first 20 displacements for state 1 and the four modes (columns), in th
 The important lines for this are the Time (fs) and the Gross Gaussian Populations for each state. The spectrum for a specific time-step is the weighted sum of spectra for each Gaussian. The Gaussian displacements are in the gwpcentres file (above) and the weightings are in this file. 
 
 ```
- Time  =       0.00 fs,       CPU =       0.05 s,    Norm    = 1.00000000
+ Time  =       0.00 fs,       CPU =       0.04 s,    Norm    = 1.00000000
  E-tot =   0.687531 ev,    E-corr =   0.000000 ev,   Delta-E =     0.0000 mev
 
  state = 1  pop.: 0.00000000   E-corr:  -0.000000 ev,   E-tot =  -0.000000 ev
@@ -112,34 +70,32 @@ The important lines for this are the Time (fs) and the Gross Gaussian Population
 ...
 
  Gross Gaussian Populations *10 (weighted),  state = 1
-v1      ReC 4:   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
-     8 - 10>    0.0000   0.0000   0.0000
+v1      ReC 4:   0.0000   0.0000   0.0000
 
 ...
 
  Gross Gaussian Populations *10 (weighted),  state = 2
-v1      ReC 4:  10.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
-     8 - 10>    0.0000   0.0000   0.0000
+v1      ReC 4:  10.0000   0.0000   0.0000
 
 ...
 
- Time  =       1.00 fs,       CPU =       0.18 s,    Norm    = 1.00000000
- E-tot =   0.687536 ev,    E-corr =   0.025228 ev,   Delta-E =     0.0047 mev
+------------------------------------------------------------------------------
 
- state = 1  pop.: 0.03120778   E-corr:   0.012614 ev,   E-tot =   0.008375 ev
- state = 2  pop.: 0.96879222   E-corr:   0.012614 ev,   E-tot =   0.679160 ev
+ Time  =       1.00 fs,       CPU =       0.06 s,    Norm    = 1.00000000
+ E-tot =   0.687532 ev,    E-corr =   0.000000 ev,   Delta-E =     0.0004 mev
+
+ state = 1  pop.: 0.00000000   E-corr:  -0.000000 ev,   E-tot =  -0.000000 ev
+ state = 2  pop.: 1.00000000   E-corr:   0.000000 ev,   E-tot =   0.687532 ev
 
 ...
- 
+
  Gross Gaussian Populations *10 (weighted),  state = 1
-v1      ReC 4:   0.0000   0.0000   0.0000   0.0000   0.1560   0.0000   0.0000
-     8 - 10>    0.0000   0.1560   0.0000
+v1      ReC 4:   0.0000   0.0000   0.0000
 
 ...
 
  Gross Gaussian Populations *10 (weighted),  state = 2
-v1      ReC 4:   9.4220   0.0011   0.0003   0.0014   0.1304   0.0009   0.0002
-     8 - 10>    0.0014   0.1304  -0.0000
+v1      ReC 4:   9.9982   0.0014   0.0005
 
 ...
 
@@ -158,13 +114,14 @@ for j in range(4):
 
 ```
 
-gives only the first three columns (Gaussians), and each row is in the order "state 1, state 2" for time-step 1, then "state 1, state 2" for time-step 2, and so on, 
+gives the three columns (Gaussians), and each row is in the order "state 1, state 2" for time-step 1, then "state 1, state 2" for time-step 2, and so on, 
 
 ```
 ['0.0', '0.0', '0.0']
 ['10.0', '0.0', '0.0']
 ['0.0', '0.0', '0.0']
-['9.422', '0.0011', '0.0003']
+['9.9982', '0.0014', '0.0005']
+
 ```
 
 ## Functions

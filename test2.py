@@ -9,13 +9,18 @@ Nmode,Ng,Time,v = read_gwpcentres(Nstate,istate) # Read list of time-steps (atom
 
 Time,gWeights = read_output(Nstate,Ng)	 # Read time-steps (fs), and Gaussian weights
 
+print "Displacement factors:"
+
+# Test printing out the displacement factors
+for j in range(6):
+   string = str(v[0][j]) + ' ' + str(v[1][j]) + ' ' + str(v[2][j]) + ' ' + str(v[3][j])
+   print string.split()
+
+print "Gaussian weights:"
+
 # Test printing out the Gaussian weights
 for j in range(4):
    string = str(gWeights[0][j]) + ' ' + str(gWeights[1][j]) + ' ' + str(gWeights[2][j])
    print string.split()
 
-# Test printing out the displacement factors
-for j in range(20):
-   string = str(v[0][j]) + ' ' + str(v[1][j]) + ' ' + str(v[2][j]) + ' ' + str(v[3][j])
-   print string.split()
 
